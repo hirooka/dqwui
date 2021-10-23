@@ -1,6 +1,9 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
+  // RuntimeConfig
+  publicRuntimeConfig: {
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s - dqwui',
@@ -45,7 +48,12 @@ export default {
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    proxy: true
+  },
+  proxy: {
+    '/api/': process.env.API_URI || 'http://localhost:8888'
+  },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
