@@ -103,14 +103,19 @@ export default {
         },
         {
           icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
+          title: 'こころ組み合わせ',
+          to: '/cb'
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'こころ一覧',
+          to: '/k'
         }
       ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Vuetify.js'
+      title: 'dqwui'
     }
   }
 }
