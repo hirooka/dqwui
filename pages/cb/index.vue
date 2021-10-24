@@ -6,16 +6,16 @@
       cols="12"
       sm="6"
     >
-    <v-select
-      v-model="selectedJob"
-      :items="jobs"
-      @change="selectJob"
-    />
-    <v-select
-      v-model="selectedSkill"
-      :items="skills"
-      @change="selectSkill"
-    />
+      <v-select
+        v-model="selectedJob"
+        :items="jobs"
+        @change="selectJob"
+      />
+      <v-select
+        v-model="selectedSkill"
+        :items="skills"
+        @change="selectSkill"
+      />
     </v-col>
 
     <v-col
@@ -30,7 +30,7 @@
         item-value="val"
         multiple
         @change="selectExclusions"
-      ></v-select>
+      />
     </v-col>
 
     <v-data-table
@@ -39,17 +39,17 @@
       :items-per-page="10"
       class="elevation-1"
     >
-      <template #item.s0="{item}">
-        {{item.slots[0].name}} ({{item.slots[0].rank}})
+      <template #[`item.s0`]="{item}">
+        {{ item.slots[0].name }} ({{ item.slots[0].rank }})
       </template>
-      <template #item.s1="{item}">
-        {{item.slots[1].name}} ({{item.slots[1].rank}})
+      <template #[`item.s1`]="{item}">
+        {{ item.slots[1].name }} ({{ item.slots[1].rank }})
       </template>
-      <template #item.s2="{item}">
-        {{item.slots[2].name}} ({{item.slots[2].rank}})
+      <template #[`item.s2`]="{item}">
+        {{ item.slots[2].name }} ({{ item.slots[2].rank }})
       </template>
-      <template #item.s3="{item}">
-        {{item.slots[3].name}} ({{item.slots[3].rank}})
+      <template #[`item.s3`]="{item}">
+        {{ item.slots[3].name }} ({{ item.slots[3].rank }})
       </template>
     </v-data-table>
   </div>
@@ -58,13 +58,12 @@
 <script lang="ts">
 import Vue from 'vue'
 import logger from '~/plugins/logger'
-import { getters } from "~/store";
 export default Vue.extend({
   async asyncData ({ app }) {
-    const path = '/v1/damages';
-    const response = await app.$axios.get(path);
-    //logger.info(response);
-    const data = response.data;
+    const path = '/v1/damages'
+    const response = await app.$axios.get(path)
+    // logger.info(response)
+    const data = response.data
     return {
       combinations: data
     }
@@ -77,13 +76,13 @@ export default Vue.extend({
       skills: [
         '創世の光', '天雷なぎはらい', 'グランエスパーダ', 'ウィンドスラッシュ',
         'レボルスライサー', '月影の大鎌', 'ヒートスライサー', 'アーススイング',
-        'ホーリークラッシュ', 'ビッグバンソード', 'ゴッドスマッシュ',
+        'ホーリークラッシュ', 'ビッグバンソード', 'ゴッドスマッシュ'
       ],
       // TODO: getting via API
       exclusions: [
         { display: 'ランプのまじん S', val: '322s' },
         { display: 'ランプのまじん A', val: '322a' },
-        { display: 'ランプのまじん B', val: '322b' },
+        { display: 'ランプのまじん B', val: '322b' }
       ],
       // TODO: change slot name by job
       headers: [
@@ -99,17 +98,17 @@ export default Vue.extend({
         { text: 'こうげき魔力', value: 'os' },
         { text: 'かいふく魔力', value: 'ds' },
         { text: 'すばやさ', value: 'sp' },
-        { text: 'きようさ', value: 'dx' },
+        { text: 'きようさ', value: 'dx' }
       ],
       combinations: [],
       selectedJob: 'BATTLE_MASTER',
       selectedSkill: '創世の光',
-      selectedExclusions: [],
+      selectedExclusions: []
     }
   },
   methods: {
     async selectJob () {
-      const path = '/v1/damages';
+      const path = '/v1/damages'
       const response = await this.$axios.get(path, {
         params: {
           j: this.selectedJob,
@@ -117,11 +116,11 @@ export default Vue.extend({
           e: this.selectedExclusions.join(',')
         }
       })
-      const data = response.data;
-      this.combinations = data;
+      const data = response.data
+      this.combinations = data
     },
     async selectSkill () {
-      const path = '/v1/damages';
+      const path = '/v1/damages'
       const response = await this.$axios.get(path, {
         params: {
           j: this.selectedJob,
@@ -129,13 +128,13 @@ export default Vue.extend({
           e: this.selectedExclusions.join(',')
         }
       })
-      const data = response.data;
-      this.combinations = data;
+      const data = response.data
+      this.combinations = data
     },
     async selectExclusions () {
       logger.info(this.selectedExclusions)
       logger.info(this.selectedExclusions.join(','))
-      const path = '/v1/damages';
+      const path = '/v1/damages'
       const response = await this.$axios.get(path, {
         params: {
           j: this.selectedJob,
@@ -143,9 +142,9 @@ export default Vue.extend({
           e: this.selectedExclusions.join(',')
         }
       })
-      const data = response.data;
-      this.combinations = data;
+      const data = response.data
+      this.combinations = data
     }
   }
-});
+})
 </script>

@@ -15,10 +15,10 @@ import Vue from 'vue'
 import logger from '~/plugins/logger'
 export default Vue.extend({
   async asyncData ({ app }) {
-    const path = '/v1/kokoros';
-    const response = await app.$axios.get(path);
-    logger.info(response);
-    const data = response.data;
+    const path = '/v1/kokoros'
+    const response = await app.$axios.get(path)
+    logger.info(response)
+    const data = response.data
     return {
       kokoros: data
     }
@@ -37,9 +37,9 @@ export default Vue.extend({
         { text: 'こうげき魔力', value: 'os' },
         { text: 'かいふく魔力', value: 'ds' },
         { text: 'きようさ', value: 'dx' },
-        { text: 'すばやさ', value: 'sp' },
+        { text: 'すばやさ', value: 'sp' }
       ]
     }
-  },
-});
+  }
+})
 </script>
