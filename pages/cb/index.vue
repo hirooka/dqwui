@@ -9,11 +9,22 @@
       <v-select
         v-model="selectedJob"
         :items="jobs"
+        item-text="text"
+        item-value="value"
         @change="selectJob"
+      />
+      <v-select
+        v-model="selectedWeapon"
+        :items="weapons"
+        item-text="text"
+        item-value="value"
+        @change="selectWeapon"
       />
       <v-select
         v-model="selectedSkill"
         :items="skills"
+        item-text="text"
+        item-value="value"
         @change="selectSkill"
       />
     </v-col>
@@ -26,8 +37,8 @@
       <v-select
         v-model="selectedExclusions"
         :items="exclusions"
-        item-text="display"
-        item-value="val"
+        item-text="text"
+        item-value="value"
         multiple
         @change="selectExclusions"
       />
@@ -61,29 +72,37 @@ import logger from '~/plugins/logger'
 export default Vue.extend({
   async asyncData ({ app }) {
     const path = '/v1/damages'
-    const response = await app.$axios.get(path)
-    // logger.info(response)
-    const data = response.data
+    const cbs = await app.$axios.get(path)
+    const cbsData = cbs.data
+    const ks = await app.$axios.get('/v1/kokoros/k')
+    const ksData = ks.data
+    const wps = await app.$axios.get('/v1/weapons/w')
+    const wpsData = wps.data
+    const jbs = await app.$axios.get('/v1/kokoros/j')
+    const jbsData = jbs.data
+    logger.info(jbsData)
     return {
-      combinations: data
+      combinations: cbsData,
+      exclusions: ksData,
+      weapons: wpsData,
+      jobs: jbsData
     }
   },
   data () {
     return {
-      // TODO: getting via API
-      jobs: ['BATTLE_MASTER', 'RANGER', 'SAGE', 'PALADIN'],
-      // TODO: getting via API
+      jobs: [],
+      weapons: [],
       skills: [
-        '創世の光', '天雷なぎはらい', 'グランエスパーダ', 'ウィンドスラッシュ',
-        'レボルスライサー', '月影の大鎌', 'ヒートスライサー', 'アーススイング',
-        'ホーリークラッシュ', 'ビッグバンソード', 'ゴッドスマッシュ'
+        { text : "天雷なぎはらい", value : "天雷なぎはらい"},
+        { text : "創世の光", value : "創世の光" }
       ],
-      // TODO: getting via API
-      exclusions: [
-        { display: 'ランプのまじん S', val: '322s' },
-        { display: 'ランプのまじん A', val: '322a' },
-        { display: 'ランプのまじん B', val: '322b' }
-      ],
+      exclusions: [],
+
+      selectedJob: 'BATTLE_MASTER',
+      selectedWeapon: { text : 'ルビスの剣', value : 'ルビスの剣' },
+      selectedSkill: { text : "創世の光", value : "創世の光" },
+      selectedExclusions: [],
+
       // TODO: change slot name by job
       headers: [
         { text: 'すいていダメージ', value: 'damage' },
@@ -100,24 +119,44 @@ export default Vue.extend({
         { text: 'すばやさ', value: 'sp' },
         { text: 'きようさ', value: 'dx' }
       ],
-      combinations: [],
-      selectedJob: 'BATTLE_MASTER',
-      selectedSkill: '創世の光',
-      selectedExclusions: []
+      combinations: []
     }
   },
   methods: {
     async selectJob () {
+      logger.info(this.selectedJob)
       const path = '/v1/damages'
       const response = await this.$axios.get(path, {
         params: {
           j: this.selectedJob,
-          s: this.selectedSkill,
+          s: this.selectedSkill.value,
           e: this.selectedExclusions.join(',')
         }
       })
       const data = response.data
       this.combinations = data
+    },
+    async selectWeapon () {
+      const path = '/v1/weapons/s'
+      const response = await this.$axios.get(path, {
+        params: {
+          w: this.selectedWeapon
+        }
+      })
+      const data = response.data
+      this.skills = data
+      this.selectedSkill = this.skills[0]
+
+      const pathDamages = '/v1/damages'
+      const responseDamages = await this.$axios.get(pathDamages, {
+        params: {
+          j: this.selectedJob,
+          s: this.selectedSkill.value,
+          e: this.selectedExclusions.join(',')
+        }
+      })
+      const dataDamages = responseDamages.data
+      this.combinations = dataDamages
     },
     async selectSkill () {
       const path = '/v1/damages'
