@@ -93,14 +93,14 @@ export default Vue.extend({
       jobs: [],
       weapons: [],
       skills: [
-        { text : "天雷なぎはらい", value : "天雷なぎはらい"},
-        { text : "創世の光", value : "創世の光" }
+        { text: '天雷なぎはらい', value: '天雷なぎはらい' },
+        { text: '創世の光', value: '創世の光' }
       ],
       exclusions: [],
 
       selectedJob: 'BATTLE_MASTER',
-      selectedWeapon: { text : 'ルビスの剣', value : 'ルビスの剣' },
-      selectedSkill: { text : "創世の光", value : "創世の光" },
+      selectedWeapon: { text: 'ルビスの剣', value: 'ルビスの剣' },
+      selectedSkill: { text: '創世の光', value: '創世の光' },
       selectedExclusions: [],
 
       // TODO: change slot name by job
