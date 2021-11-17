@@ -57,8 +57,9 @@
       cols="auto"
       sm="6"
     >
-      <div v-if="loading"><v-progress-circular indeterminate /></div>
-
+      <div v-if="loading">
+        <v-progress-circular indeterminate />
+      </div>
     </v-col>
 
     <v-data-table
@@ -88,7 +89,6 @@ import Vue from 'vue'
 import logger from '~/plugins/logger'
 export default Vue.extend({
   async asyncData ({ app }) {
-
     const path = '/v1/kokoro/combos'
     const cbs = await app.$axios.get(path)
     const cbsData = cbs.data
@@ -96,7 +96,7 @@ export default Vue.extend({
     const ksData = ks.data
     return {
       combinations: cbsData,
-      exclusions: ksData,
+      exclusions: ksData
     }
   },
   data () {
@@ -109,7 +109,7 @@ export default Vue.extend({
         { text: 'パラディン', value: 'PALADIN' },
         { text: '魔法戦士', value: 'ARMAMENTALIT' },
         { text: 'スーパースター', value: 'SUPERSTAR' },
-        { text: '海賊', value: 'PIRATE' },
+        { text: '海賊', value: 'PIRATE' }
       ],
       attacks: [
         { text: '斬撃', value: 'SLASH' },
@@ -117,7 +117,7 @@ export default Vue.extend({
         { text: 'じゅもん', value: 'SPELL' },
         { text: 'こう魔斬撃', value: 'PHYSICS_SPELL_SLASH' },
         { text: 'こう魔体技', value: 'PHYSICS_SPELL_HIT' },
-        { text: 'ブレス', value: 'BREATH' },
+        { text: 'ブレス', value: 'BREATH' }
       ],
       attributes: [
         { text: 'バギ', value: 'BAGI' },
@@ -127,7 +127,7 @@ export default Vue.extend({
         { text: 'ヒャド', value: 'HYADO' },
         { text: 'イオ', value: 'IO' },
         { text: 'ジバリア', value: 'BJIBARIA' },
-        { text: 'メラ', value: 'MERA' },
+        { text: 'メラ', value: 'MERA' }
       ],
       races: [
         { text: '指定なし', value: 'NONE' },
@@ -143,7 +143,7 @@ export default Vue.extend({
         { text: '植物系', value: 'PLANT' },
         { text: 'スライム系', value: 'SLIME' },
         { text: '水系', value: 'WATER' },
-        { text: 'ゾンビ系', value: 'ZOMBIE' },
+        { text: 'ゾンビ系', value: 'ZOMBIE' }
       ],
       exclusions: [],
 
