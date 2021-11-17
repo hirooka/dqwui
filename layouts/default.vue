@@ -104,12 +104,12 @@ export default {
         {
           icon: 'mdi-chart-bubble',
           title: 'こころ組み合わせ',
-          to: '/cb'
+          to: '/combo'
         },
         {
           icon: 'mdi-chart-bubble',
           title: 'こころ一覧',
-          to: '/k'
+          to: '/kokoro'
         }
       ],
       miniVariant: false,

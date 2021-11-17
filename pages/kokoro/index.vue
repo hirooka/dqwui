@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>こころ</h1>
+    <h1>こころ一覧</h1>
     <v-data-table
       :headers="headers"
       :items="kokoros"
@@ -28,10 +28,10 @@ export default Vue.extend({
       headers: [
         { text: 'ばんごう', value: 'id' },
         { text: 'なまえ', value: 'name' },
-        { text: 'グレード', value: 'rank' },
+        { text: 'グレード', value: 'grade' },
         { text: 'タイプ', value: 'type' },
-        { text: 'さいだいHP', value: 'type' },
-        { text: 'さいだいMP', value: 'type' },
+        { text: 'さいだいHP', value: 'hp' },
+        { text: 'さいだいMP', value: 'mp' },
         { text: 'ちから', value: 'op' },
         { text: 'みのまもり', value: 'dp' },
         { text: 'こうげき魔力', value: 'os' },
