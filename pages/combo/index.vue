@@ -1,66 +1,90 @@
 <template>
   <div>
     <h1>こころ組み合わせ</h1>
-
-    <v-col
-      class="d-flex"
-      cols="auto"
-      sm="6"
-    >
-      <v-select
-        v-model="selectedJob"
-        :items="jobs"
-        item-text="text"
-        item-value="value"
-        @change="selectJob"
-      />
-      <v-select
-        v-model="selectedAttack"
-        :items="attacks"
-        item-text="text"
-        item-value="value"
-        @change="selectAttack"
-      />
-      <v-select
-        v-model="selectedAttribute"
-        :items="attributes"
-        item-text="text"
-        item-value="value"
-        @change="selectAttribute"
-      />
-      <v-select
-        v-model="selectedRace"
-        :items="races"
-        item-text="text"
-        item-value="value"
-        @change="selectRace"
-      />
-    </v-col>
-
-    <v-col
-      class="d-flex"
-      cols="12"
-      sm="6"
-    >
-      <v-select
-        v-model="selectedExclusions"
-        :items="exclusions"
-        item-text="text"
-        item-value="value"
-        multiple
-        @change="selectExclusions"
-      />
-    </v-col>
-
-    <v-col
-      class="d-flex"
-      cols="auto"
-      sm="6"
-    >
-      <div v-if="loading">
-        <v-progress-circular indeterminate />
-      </div>
-    </v-col>
+    <v-container fluid>
+      <v-row align="center">
+        <v-col
+          class="d-flex"
+          cols="6"
+          sm="6"
+          lg="3"
+        >
+          <v-select
+            v-model="selectedJob"
+            label="職業"
+            outlined
+            :items="jobs"
+            item-text="text"
+            item-value="value"
+            @change="selectJob"
+          />
+        </v-col>
+        <v-col
+          class="d-flex"
+          cols="6"
+          sm="6"
+          lg="3"
+        >
+          <v-select
+            v-model="selectedAttack"
+            label="こうげきタイプ"
+            outlined
+            :items="attacks"
+            item-text="text"
+            item-value="value"
+            @change="selectAttack"
+          />
+        </v-col>
+        <v-col
+          class="d-flex"
+          cols="6"
+          sm="6"
+          lg="3"
+        >
+          <v-select
+            v-model="selectedAttribute"
+            label="属性"
+            outlined
+            :items="attributes"
+            item-text="text"
+            item-value="value"
+            @change="selectAttribute"
+          />
+        </v-col>
+        <v-col
+          class="d-flex"
+          cols="6"
+          sm="6"
+          lg="3"
+        >
+          <v-select
+            v-model="selectedRace"
+            label="系統"
+            outlined
+            :items="races"
+            item-text="text"
+            item-value="value"
+            @change="selectRace"
+          />
+        </v-col>
+        <v-col
+          class="d-flex"
+          cols="12"
+        >
+          <v-select
+            v-model="selectedExclusions"
+            label="除外するこころ"
+            outlined
+            :items="exclusions"
+            item-text="text"
+            item-value="value"
+            multiple
+            chips
+            @change="selectExclusions"
+          />
+        </v-col>
+      </v-row>
+    </v-container>
 
     <v-data-table
       :headers="headers"
@@ -81,6 +105,26 @@
         {{ item.slots[3].name }} ({{ item.slots[3].grade }})
       </template>
     </v-data-table>
+
+    <v-dialog
+      v-model="loading"
+      fullscreen
+    >
+      <v-container
+        fluid
+        fill-height
+      >
+        <v-layout
+          justify-center
+          align-center
+        >
+          <v-progress-circular
+            indeterminate
+            color="primary"
+          />
+        </v-layout>
+      </v-container>
+    </v-dialog>
   </div>
 </template>
 
@@ -147,10 +191,10 @@ export default Vue.extend({
       ],
       exclusions: [],
 
-      selectedJob: { text: 'バトルマスター', value: 'BATTLE_MASTER' },
-      selectedAttack: { text: '斬撃', value: 'SLASH' },
-      selectedAttribute: { text: 'デイン', value: 'DEIN' },
-      selectedRace: { text: '指定なし', value: 'NONE' },
+      selectedJob: 'BATTLE_MASTER',
+      selectedAttack: 'SLASH',
+      selectedAttribute: 'DEIN',
+      selectedRace: 'NONE',
       selectedExclusions: [],
 
       // TODO: change slot name by job
@@ -179,9 +223,9 @@ export default Vue.extend({
       const response = await this.$axios.get(path, {
         params: {
           j: this.selectedJob,
-          k: this.selectedAttack.value,
-          a: this.selectedAttribute.value,
-          r: this.selectedRace.value,
+          k: this.selectedAttack,
+          a: this.selectedAttribute,
+          r: this.selectedRace,
           e: this.selectedExclusions.join(',')
         }
       })
@@ -194,10 +238,10 @@ export default Vue.extend({
       const path = '/v1/kokoro/combos'
       const response = await this.$axios.get(path, {
         params: {
-          j: this.selectedJob.value,
+          j: this.selectedJob,
           k: this.selectedAttack,
-          a: this.selectedAttribute.value,
-          r: this.selectedRace.value,
+          a: this.selectedAttribute,
+          r: this.selectedRace,
           e: this.selectedExclusions.join(',')
         }
       })
@@ -210,10 +254,10 @@ export default Vue.extend({
       const path = '/v1/kokoro/combos'
       const response = await this.$axios.get(path, {
         params: {
-          j: this.selectedJob.value,
-          k: this.selectedAttack.value,
+          j: this.selectedJob,
+          k: this.selectedAttack,
           a: this.selectedAttribute,
-          r: this.selectedRace.value,
+          r: this.selectedRace,
           e: this.selectedExclusions.join(',')
         }
       })
@@ -226,9 +270,9 @@ export default Vue.extend({
       const path = '/v1/kokoro/combos'
       const response = await this.$axios.get(path, {
         params: {
-          j: this.selectedJob.value,
-          k: this.selectedAttack.value,
-          a: this.selectedAttribute.value,
+          j: this.selectedJob,
+          k: this.selectedAttack,
+          a: this.selectedAttribute,
           r: this.selectedRace,
           e: this.selectedExclusions.join(',')
         }
@@ -244,10 +288,10 @@ export default Vue.extend({
       const path = '/v1/kokoro/combos'
       const response = await this.$axios.get(path, {
         params: {
-          j: this.selectedJob.value,
-          k: this.selectedAttack.value,
-          a: this.selectedAttribute.value,
-          r: this.selectedRace.value,
+          j: this.selectedJob,
+          k: this.selectedAttack,
+          a: this.selectedAttribute,
+          r: this.selectedRace,
           e: this.selectedExclusions.join(',')
         }
       })
