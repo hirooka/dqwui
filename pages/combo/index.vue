@@ -16,7 +16,6 @@
             :items="jobs"
             item-text="text"
             item-value="value"
-            @change="selectJob"
           />
         </v-col>
         <v-col
@@ -32,7 +31,6 @@
             :items="attacks"
             item-text="text"
             item-value="value"
-            @change="selectAttack"
           />
         </v-col>
         <v-col
@@ -48,7 +46,6 @@
             :items="attributes"
             item-text="text"
             item-value="value"
-            @change="selectAttribute"
           />
         </v-col>
         <v-col
@@ -64,12 +61,62 @@
             :items="races"
             item-text="text"
             item-value="value"
-            @change="selectRace"
           />
         </v-col>
         <v-col
           class="d-flex"
-          cols="12"
+          cols="6"
+          sm="6"
+          lg="6"
+        >
+          <v-text-field
+            v-model="level"
+            label="レベル"
+            outlined
+            type="number"
+            min="30"
+            max="80"
+          >
+            80
+          </v-text-field>
+        </v-col>
+        <v-col
+          class="d-flex"
+          cols="6"
+          sm="6"
+          lg="6"
+        >
+          <v-radio-group
+            v-model="bride"
+            mandatory
+            row
+            dense
+          >
+            <template v-slot:label>
+              <div>花嫁</div>
+            </template>
+            <v-radio
+              label="フローラ"
+              value="フローラ"
+            >
+            </v-radio>
+            <v-radio
+              label="ビアンカ"
+              value="ビアンカ"
+            >
+            </v-radio>
+            <v-radio
+              label="デボラ"
+              value="デボラ"
+            >
+            </v-radio>
+          </v-radio-group>
+        </v-col>
+        <v-col
+          class="d-flex"
+          cols="6"
+          sm="6"
+          lg="6"
         >
           <v-select
             v-model="selectedExclusions"
@@ -80,8 +127,23 @@
             item-value="value"
             multiple
             chips
-            @change="selectExclusions"
           />
+        </v-col>
+        <v-col
+          class="d-flex"
+          cols="6"
+          sm="6"
+          lg="6"
+        >
+          <v-btn
+            block
+            color="primary"
+            large
+            @click="search"
+
+          >
+            しらべる
+          </v-btn>
         </v-col>
       </v-row>
     </v-container>
@@ -145,6 +207,8 @@ export default Vue.extend({
   },
   data () {
     return {
+      level: 80,
+      bride: 'フローラ',
       loading: false,
       jobs: [
         { text: 'バトルマスター', value: 'BATTLE_MASTER' },
@@ -217,7 +281,7 @@ export default Vue.extend({
     }
   },
   methods: {
-    async selectJob () {
+    async search () {
       this.loading = true
       const path = '/v1/kokoro/combos'
       const response = await this.$axios.get(path, {
@@ -226,72 +290,8 @@ export default Vue.extend({
           k: this.selectedAttack,
           a: this.selectedAttribute,
           r: this.selectedRace,
-          e: this.selectedExclusions.join(',')
-        }
-      })
-      const data = response.data
-      this.combinations = data
-      this.loading = false
-    },
-    async selectAttack () {
-      this.loading = true
-      const path = '/v1/kokoro/combos'
-      const response = await this.$axios.get(path, {
-        params: {
-          j: this.selectedJob,
-          k: this.selectedAttack,
-          a: this.selectedAttribute,
-          r: this.selectedRace,
-          e: this.selectedExclusions.join(',')
-        }
-      })
-      const data = response.data
-      this.combinations = data
-      this.loading = false
-    },
-    async selectAttribute () {
-      this.loading = true
-      const path = '/v1/kokoro/combos'
-      const response = await this.$axios.get(path, {
-        params: {
-          j: this.selectedJob,
-          k: this.selectedAttack,
-          a: this.selectedAttribute,
-          r: this.selectedRace,
-          e: this.selectedExclusions.join(',')
-        }
-      })
-      const data = response.data
-      this.combinations = data
-      this.loading = false
-    },
-    async selectRace () {
-      this.loading = true
-      const path = '/v1/kokoro/combos'
-      const response = await this.$axios.get(path, {
-        params: {
-          j: this.selectedJob,
-          k: this.selectedAttack,
-          a: this.selectedAttribute,
-          r: this.selectedRace,
-          e: this.selectedExclusions.join(',')
-        }
-      })
-      const data = response.data
-      this.combinations = data
-      this.loading = false
-    },
-    async selectExclusions () {
-      this.loading = true
-      logger.info(this.selectedExclusions)
-      logger.info(this.selectedExclusions.join(','))
-      const path = '/v1/kokoro/combos'
-      const response = await this.$axios.get(path, {
-        params: {
-          j: this.selectedJob,
-          k: this.selectedAttack,
-          a: this.selectedAttribute,
-          r: this.selectedRace,
+          l: this.level,
+          b: this.bride,
           e: this.selectedExclusions.join(',')
         }
       })
