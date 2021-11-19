@@ -1,6 +1,9 @@
 <template>
   <div>
-    <h1>こころ組み合わせ</h1>
+    <h1 class="mb-4">
+      こころ組み合わせ
+    </h1>
+
     <v-container fluid>
       <v-row align="center">
         <v-col
@@ -16,6 +19,8 @@
             :items="jobs"
             item-text="text"
             item-value="value"
+            dense
+            class="mt-n4 mb-n4 pt-0"
           />
         </v-col>
         <v-col
@@ -31,6 +36,8 @@
             :items="attacks"
             item-text="text"
             item-value="value"
+            dense
+            class="mt-n4 mb-n4 pt-0"
           />
         </v-col>
         <v-col
@@ -46,6 +53,8 @@
             :items="attributes"
             item-text="text"
             item-value="value"
+            dense
+            class="mt-n4 mb-n4 pt-0"
           />
         </v-col>
         <v-col
@@ -61,6 +70,8 @@
             :items="races"
             item-text="text"
             item-value="value"
+            dense
+            class="mt-n4 mb-n4 pt-0"
           />
         </v-col>
         <v-col
@@ -76,6 +87,8 @@
             type="number"
             min="30"
             max="80"
+            dense
+            class="mt-n4 mb-n4 pt-0"
           >
             80
           </v-text-field>
@@ -91,6 +104,7 @@
             mandatory
             row
             dense
+            class="mt-n6 mb-n4 pt-0"
           >
             <template #label>
               <div>花嫁</div>
@@ -124,6 +138,8 @@
             item-value="value"
             multiple
             chips
+            dense
+            class="mt-n4 mb-n4 pt-0"
           />
         </v-col>
         <v-col
@@ -133,9 +149,10 @@
           lg="6"
         >
           <v-btn
+            class="mt-n8 mb-n4 pt-0"
             block
             color="primary"
-            large
+            dense
             @click="search"
           >
             しらべる
@@ -211,7 +228,7 @@ export default Vue.extend({
         { text: 'レンジャー', value: 'RANGER' },
         { text: '賢者', value: 'SAGE' },
         { text: 'パラディン', value: 'PALADIN' },
-        { text: '魔法戦士', value: 'ARMAMENTALIT' },
+        { text: '魔法戦士', value: 'ARMAMENTALIST' },
         { text: 'スーパースター', value: 'SUPERSTAR' },
         { text: '海賊', value: 'PIRATE' }
       ],
