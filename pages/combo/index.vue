@@ -1,9 +1,11 @@
 <template>
   <div>
-    <h1 class="mb-4">
+    <h1>
       こころ組み合わせ
     </h1>
-
+    <div class="mb-4">
+      ドラクエウォークの火力ツールです。
+    </div>
     <v-container fluid>
       <v-row align="center">
         <v-col
@@ -166,18 +168,45 @@
       :items="combinations"
       :items-per-page="10"
       class="elevation-1"
+      mobile-breakpoint="0"
+      dense
+      fixed-header
     >
       <template #[`item.s0`]="{item}">
-        {{ item.slots[0].name }} ({{ item.slots[0].grade }})
+        <v-chip
+          :color="item.slots[0].color.toLowerCase()"
+          :text-color="getTextColor(item.slots[0].color.toLowerCase())"
+          small
+        >
+          {{ item.slots[0].name }}{{ item.slots[0].grade }}
+        </v-chip>
       </template>
       <template #[`item.s1`]="{item}">
-        {{ item.slots[1].name }} ({{ item.slots[1].grade }})
+        <v-chip
+          :color="item.slots[1].color.toLowerCase()"
+          :text-color="getTextColor(item.slots[1].color.toLowerCase())"
+          small
+        >
+          {{ item.slots[1].name }}{{ item.slots[1].grade }}
+        </v-chip>
       </template>
       <template #[`item.s2`]="{item}">
-        {{ item.slots[2].name }} ({{ item.slots[2].grade }})
+        <v-chip
+          :color="item.slots[2].color.toLowerCase()"
+          :text-color="getTextColor(item.slots[2].color.toLowerCase())"
+          small
+        >
+          {{ item.slots[2].name }}{{ item.slots[2].grade }}
+        </v-chip>
       </template>
       <template #[`item.s3`]="{item}">
-        {{ item.slots[3].name }} ({{ item.slots[3].grade }})
+        <v-chip
+          :color="item.slots[3].color.toLowerCase()"
+          :text-color="getTextColor(item.slots[3].color.toLowerCase())"
+          small
+        >
+          {{ item.slots[3].name }}{{ item.slots[3].grade }}
+        </v-chip>
       </template>
     </v-data-table>
 
@@ -312,6 +341,13 @@ export default Vue.extend({
       const data = response.data
       this.combinations = data
       this.loading = false
+    },
+    getTextColor (color: string) {
+      if (color === 'yellow') {
+        return 'black'
+      } else {
+        return 'white'
+      }
     }
   }
 })
