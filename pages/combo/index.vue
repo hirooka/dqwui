@@ -92,24 +92,21 @@
             row
             dense
           >
-            <template v-slot:label>
+            <template #label>
               <div>花嫁</div>
             </template>
             <v-radio
               label="フローラ"
               value="フローラ"
-            >
-            </v-radio>
+            />
             <v-radio
               label="ビアンカ"
               value="ビアンカ"
-            >
-            </v-radio>
+            />
             <v-radio
               label="デボラ"
               value="デボラ"
-            >
-            </v-radio>
+            />
           </v-radio-group>
         </v-col>
         <v-col
@@ -140,7 +137,6 @@
             color="primary"
             large
             @click="search"
-
           >
             しらべる
           </v-btn>
@@ -282,6 +278,7 @@ export default Vue.extend({
   },
   methods: {
     async search () {
+      logger.info('.')
       this.loading = true
       const path = '/v1/kokoro/combos'
       const response = await this.$axios.get(path, {
