@@ -1,12 +1,45 @@
 <template>
   <div>
-    <h1>こころ一覧</h1>
-    <v-data-table
-      :headers="headers"
-      :items="kokoros"
-      :items-per-page="10"
-      class="elevation-1"
-    />
+    <h2>
+      こころ一覧
+    </h2>
+    <div class="mt-0">
+      このツールでサポートしているこころの一覧です。
+    </div>
+    <v-card>
+      <v-card-title>
+        <v-spacer />
+        <v-text-field
+          v-model="search"
+          append-icon="mdi-magnify"
+          label="さがす"
+          single-line
+          hide-details
+          dense
+          class="mb-2 mt-n2"
+        />
+      </v-card-title>
+      <v-data-table
+        :headers="headers"
+        :items="kokoros"
+        :items-per-page="20"
+        class="elevation-1"
+        mobile-breakpoint="0"
+        dense
+        fixed-header
+        :search="search"
+      >
+        <template #[`item.name`]="{item}">
+          <v-chip
+            :color="item.type.toLowerCase()"
+            :text-color="getTextColor(item.type.toLowerCase())"
+            small
+          >
+            {{ item.name }}
+          </v-chip>
+        </template>
+      </v-data-table>
+    </v-card>
   </div>
 </template>
 
@@ -25,6 +58,7 @@ export default Vue.extend({
   },
   data () {
     return {
+      search: '',
       headers: [
         { text: 'ばんごう', value: 'id' },
         { text: 'なまえ', value: 'name' },
@@ -38,7 +72,17 @@ export default Vue.extend({
         { text: 'かいふく魔力', value: 'ds' },
         { text: 'きようさ', value: 'dx' },
         { text: 'すばやさ', value: 'sp' }
-      ]
+      ],
+      kokoros: []
+    }
+  },
+  methods: {
+    getTextColor (color: string) {
+      if (color === 'yellow') {
+        return 'black'
+      } else {
+        return 'white'
+      }
     }
   }
 })

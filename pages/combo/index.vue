@@ -143,7 +143,7 @@
             dense
             class="mt-n4 mb-n4 pt-0"
           >
-            <template v-slot:selection="{ item, index }">
+            <template #selection="{ item }">
               <v-chip
                 small
                 close
