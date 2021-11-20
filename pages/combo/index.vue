@@ -142,7 +142,17 @@
             chips
             dense
             class="mt-n4 mb-n4 pt-0"
-          />
+          >
+            <template v-slot:selection="{ item, index }">
+              <v-chip
+                small
+                close
+                @click:close="deleteExclusion(item)"
+              >
+                <span>{{ item.text }}</span>
+              </v-chip>
+            </template>
+          </v-select>
         </v-col>
         <v-col
           class="d-flex"
@@ -177,7 +187,7 @@
           :color="item.slots[0].color.toLowerCase()"
           :text-color="getTextColor(item.slots[0].color.toLowerCase())"
           small
-          @click="setExclusion(item.slots[0])"
+          @click="addExclusion(item.slots[0])"
         >
           {{ item.slots[0].name }}{{ item.slots[0].grade }}
         </v-chip>
@@ -187,7 +197,7 @@
           :color="item.slots[1].color.toLowerCase()"
           :text-color="getTextColor(item.slots[1].color.toLowerCase())"
           small
-          @click="setExclusion(item.slots[1])"
+          @click="addExclusion(item.slots[1])"
         >
           {{ item.slots[1].name }}{{ item.slots[1].grade }}
         </v-chip>
@@ -197,7 +207,7 @@
           :color="item.slots[2].color.toLowerCase()"
           :text-color="getTextColor(item.slots[2].color.toLowerCase())"
           small
-          @click="setExclusion(item.slots[2])"
+          @click="addExclusion(item.slots[2])"
         >
           {{ item.slots[2].name }}{{ item.slots[2].grade }}
         </v-chip>
@@ -207,7 +217,7 @@
           :color="item.slots[3].color.toLowerCase()"
           :text-color="getTextColor(item.slots[3].color.toLowerCase())"
           small
-          @click="setExclusion(item.slots[3])"
+          @click="addExclusion(item.slots[3])"
         >
           {{ item.slots[3].name }}{{ item.slots[3].grade }}
         </v-chip>
@@ -246,6 +256,10 @@ interface Slot {
   color: string
   cost: number
   isUp: boolean
+}
+interface Exclusion {
+  text: string
+  value: string
 }
 export default Vue.extend({
   async asyncData ({ app }) {
@@ -361,10 +375,16 @@ export default Vue.extend({
         return 'white'
       }
     },
-    setExclusion (slot: Slot) {
+    addExclusion (slot: Slot) {
       const ex = `${slot.id}${slot.grade.toLowerCase()}`
       if (!this.selectedExclusions.includes(ex)) {
         this.selectedExclusions.push(`${slot.id}${slot.grade.toLowerCase()}`)
+      }
+    },
+    deleteExclusion (item: Exclusion) {
+      const ex = `${item.value}`
+      if (this.selectedExclusions.includes(ex)) {
+        this.selectedExclusions = this.selectedExclusions.filter(v => v !== ex)
       }
     }
   }
