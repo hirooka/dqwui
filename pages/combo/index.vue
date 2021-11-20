@@ -177,6 +177,7 @@
           :color="item.slots[0].color.toLowerCase()"
           :text-color="getTextColor(item.slots[0].color.toLowerCase())"
           small
+          @click="setExclusion(item.slots[0])"
         >
           {{ item.slots[0].name }}{{ item.slots[0].grade }}
         </v-chip>
@@ -186,6 +187,7 @@
           :color="item.slots[1].color.toLowerCase()"
           :text-color="getTextColor(item.slots[1].color.toLowerCase())"
           small
+          @click="setExclusion(item.slots[1])"
         >
           {{ item.slots[1].name }}{{ item.slots[1].grade }}
         </v-chip>
@@ -195,6 +197,7 @@
           :color="item.slots[2].color.toLowerCase()"
           :text-color="getTextColor(item.slots[2].color.toLowerCase())"
           small
+          @click="setExclusion(item.slots[2])"
         >
           {{ item.slots[2].name }}{{ item.slots[2].grade }}
         </v-chip>
@@ -204,6 +207,7 @@
           :color="item.slots[3].color.toLowerCase()"
           :text-color="getTextColor(item.slots[3].color.toLowerCase())"
           small
+          @click="setExclusion(item.slots[3])"
         >
           {{ item.slots[3].name }}{{ item.slots[3].grade }}
         </v-chip>
@@ -348,6 +352,10 @@ export default Vue.extend({
       } else {
         return 'white'
       }
+    },
+    setExclusion (slot: any) {
+      const ex = `${slot.id}${slot.grade.toLowerCase()}`
+      this.selectedExclusions.push(ex)
     }
   }
 })
