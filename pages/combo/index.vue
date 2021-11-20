@@ -306,10 +306,10 @@ export default Vue.extend({
       // TODO: change slot name by job
       headers: [
         { text: 'いりょく', value: 'value' },
-        { text: 'S1', value: 's0' },
-        { text: 'S2', value: 's1' },
-        { text: 'S3', value: 's2' },
-        { text: 'S4', value: 's3' },
+        { text: '左下スロット', value: 's0' },
+        { text: '右下スロット', value: 's1' },
+        { text: '左上スロット', value: 's2' },
+        { text: '右上スロット(虹)', value: 's3' },
         { text: 'さいだいHP', value: 'hp' },
         { text: 'さいだいMP', value: 'mp' },
         { text: 'ちから', value: 'op' },
