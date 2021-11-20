@@ -18,6 +18,7 @@
                 こちら
               </a>です。
             </p>
+            <p>({{ commitId }})</p>
             <hr class="my-0">
           </v-card-text>
           <v-card-actions>
@@ -46,3 +47,14 @@
     </v-row>
   </div>
 </template>
+
+<script lang="ts">
+import Vue from 'vue'
+export default Vue.extend({
+  data () {
+    return {
+      commitId: process.env.NUXT_ENV_GIT_COMMIT_ID
+    }
+  }
+})
+</script>

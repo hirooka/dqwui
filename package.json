@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt build",
+    "git-commit-id": "NUXT_ENV_GIT_COMMIT_ID=`git rev-parse --short HEAD`",
+    "dev": "yarn run git-commit-id nuxt",
+    "build": "yarn run git-commit-id nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate",
+    "generate": "yarn run git-commit-id nuxt generate",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
     "lint": "yarn lint:js",
     "test": "jest"
