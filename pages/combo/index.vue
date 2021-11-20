@@ -354,7 +354,7 @@ export default Vue.extend({
       }
     },
     setExclusion (slot: any) {
-      const ex = `${slot.id}${slot.grade.toLowerCase()}`
+      const ex: string = `${slot.id}${slot.grade.toLowerCase()}`
       this.selectedExclusions.push(ex)
     }
   }
