@@ -239,6 +239,14 @@
 <script lang="ts">
 import Vue from 'vue'
 import logger from '~/plugins/logger'
+interface Slot {
+  type: string
+  id: number
+  grade: string
+  color: string
+  cost: number
+  isUp: boolean
+}
 export default Vue.extend({
   async asyncData ({ app }) {
     const path = '/v1/kokoro/combos'
@@ -305,7 +313,7 @@ export default Vue.extend({
       selectedAttack: 'SLASH',
       selectedAttribute: 'DEIN',
       selectedRace: 'NONE',
-      selectedExclusions: [],
+      selectedExclusions: [] as string[],
 
       // TODO: change slot name by job
       headers: [
@@ -353,9 +361,11 @@ export default Vue.extend({
         return 'white'
       }
     },
-    setExclusion (slot: any) {
-      const ex: string = `${slot.id}${slot.grade.toLowerCase()}`
-      this.selectedExclusions.push(ex)
+    setExclusion (slot: Slot) {
+      const ex = `${slot.id}${slot.grade.toLowerCase()}`
+      if (!this.selectedExclusions.includes(ex)) {
+        this.selectedExclusions.push(`${slot.id}${slot.grade.toLowerCase()}`)
+      }
     }
   }
 })
