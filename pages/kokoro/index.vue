@@ -60,7 +60,7 @@ export default Vue.extend({
     return {
       search: '',
       headers: [
-        { text: 'ばんごう', value: 'id' },
+        { text: 'ばんごう', value: 'number' },
         { text: 'なまえ', value: 'name' },
         { text: 'グレード', value: 'grade' },
         { text: 'タイプ', value: 'type' },

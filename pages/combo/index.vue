@@ -251,7 +251,7 @@ import Vue from 'vue'
 import logger from '~/plugins/logger'
 interface Slot {
   type: string
-  id: number
+  number: number
   grade: string
   color: string
   cost: number
@@ -376,9 +376,9 @@ export default Vue.extend({
       }
     },
     addExclusion (slot: Slot) {
-      const ex = `${slot.id}${slot.grade.toLowerCase()}`
+      const ex = `${slot.number}${slot.grade.toLowerCase()}`
       if (!this.selectedExclusions.includes(ex)) {
-        this.selectedExclusions.push(`${slot.id}${slot.grade.toLowerCase()}`)
+        this.selectedExclusions.push(`${slot.number}${slot.grade.toLowerCase()}`)
       }
     },
     deleteExclusion (item: Exclusion) {
