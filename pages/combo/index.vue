@@ -127,7 +127,7 @@
         </v-col>
         <v-col
           class="d-flex"
-          cols="6"
+          cols="12"
           sm="6"
           lg="6"
         >
@@ -141,7 +141,7 @@
             multiple
             chips
             dense
-            class="mt-n4 mb-n4 pt-0"
+            class="mt-n4 mb-n2 pt-0"
           >
             <template #selection="{ item }">
               <v-chip
@@ -156,7 +156,7 @@
         </v-col>
         <v-col
           class="d-flex"
-          cols="6"
+          cols="12"
           sm="6"
           lg="6"
         >
@@ -164,7 +164,7 @@
             class="mt-n8 mb-n4 pt-0"
             block
             color="primary"
-            dense
+
             @click="search"
           >
             しらべる

@@ -18,7 +18,6 @@
                 こちら
               </a>です。
             </p>
-            <p>({{ commitId }})</p>
             <hr class="my-0">
           </v-card-text>
           <v-card-actions>
@@ -42,6 +41,9 @@
               こころ一覧
             </v-btn>
           </v-card-actions>
+          <v-card-text>
+            <p class="text-right">({{ commitId }})</p>
+          </v-card-text>
         </v-card>
       </v-col>
     </v-row>
