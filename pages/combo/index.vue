@@ -302,7 +302,7 @@ export default Vue.extend({
         { text: 'ギラ', value: 'GIRA' },
         { text: 'ヒャド', value: 'HYADO' },
         { text: 'イオ', value: 'IO' },
-        { text: 'ジバリア', value: 'BJIBARIA' },
+        { text: 'ジバリア', value: 'JIBARIA' },
         { text: 'メラ', value: 'MERA' }
       ],
       races: [
