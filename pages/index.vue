@@ -8,6 +8,7 @@
           </v-card-title>
           <v-card-text>
             <p>ドラクエウォークの上級職において最適なこころの組み合わせを提案します。</p>
+            <p>{{ kokoro }}種類のこころ(主にS, A, Bグレード)をサポートし、約{{ combination }}通りの組み合わせの中から最適なこころの組み合わせを数秒で計算します。</p>
             <p>
               APIも提供しています。APIドキュメントは、<a
                 href="https://dqwapi.hirooka.pro/api.html"
@@ -42,7 +43,9 @@
             </v-btn>
           </v-card-actions>
           <v-card-text>
-            <p class="text-right">({{ commitId }})</p>
+            <p class="text-right">
+              ({{ commitId }})
+            </p>
           </v-card-text>
         </v-card>
       </v-col>
@@ -52,9 +55,22 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import logger from '~/plugins/logger'
 export default Vue.extend({
+  async asyncData ({ app }) {
+    const path = '/v1/kokoro/combos/info'
+    const response = await app.$axios.get(path)
+    const data = response.data
+    logger.info(data)
+    return {
+      kokoro: data.kokoro,
+      combination: data.combination
+    }
+  },
   data () {
     return {
+      kokoro: '-',
+      combination: '-',
       commitId: process.env.NUXT_ENV_GIT_COMMIT_ID
     }
   }

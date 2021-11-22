@@ -336,6 +336,7 @@ export default Vue.extend({
         { text: '右下スロット', value: 's1' },
         { text: '左上スロット', value: 's2' },
         { text: '右上スロット(虹)', value: 's3' },
+        { text: 'コスト', value: 'cost' },
         { text: 'さいだいHP', value: 'hp' },
         { text: 'さいだいMP', value: 'mp' },
         { text: 'ちから', value: 'op' },
@@ -343,7 +344,10 @@ export default Vue.extend({
         { text: 'こうげき魔力', value: 'os' },
         { text: 'かいふく魔力', value: 'ds' },
         { text: 'すばやさ', value: 'sp' },
-        { text: 'きようさ', value: 'dx' }
+        { text: 'きようさ', value: 'dx' },
+        { text: 'こうげき倍率', value: 'attackMag' },
+        { text: '属性倍率', value: 'attributeMag' },
+        { text: '系統倍率', value: 'raceMag' }
       ],
       combinations: []
     }

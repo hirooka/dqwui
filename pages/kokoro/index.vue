@@ -3,8 +3,12 @@
     <h2>
       こころ一覧
     </h2>
-    <div class="mt-0">
-      このツールでサポートしているこころの一覧です。
+    <div class="my-2">
+      <p class="text-body-2">
+        このツールでサポートしているこころの一覧です。
+        メガモンスターやほこらモンスター、めったに枠、あまり枠のモンスターについては、SグレードだけではなくAグレードやBグレードもサポートします。
+        サポートするこころは随時追加していきます。
+      </p>
     </div>
     <v-card>
       <v-card-title>
@@ -28,6 +32,9 @@
         dense
         fixed-header
         :search="search"
+        show-expand
+        single-expand
+        item-key="uuid"
       >
         <template #[`item.name`]="{item}">
           <v-chip
@@ -37,6 +44,11 @@
           >
             {{ item.name }}
           </v-chip>
+        </template>
+        <template #expanded-item="{ headersc, item }">
+          <td :colspan="headersc.length">
+            {{ item.damages }} <!-- TODO: format-->
+          </td>
         </template>
       </v-data-table>
     </v-card>
@@ -71,7 +83,8 @@ export default Vue.extend({
         { text: 'こうげき魔力', value: 'os' },
         { text: 'かいふく魔力', value: 'ds' },
         { text: 'きようさ', value: 'dx' },
-        { text: 'すばやさ', value: 'sp' }
+        { text: 'すばやさ', value: 'sp' },
+        { text: '倍率情報', value: 'data-table-expand' }
       ],
       kokoros: []
     }

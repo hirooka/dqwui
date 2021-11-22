@@ -37,6 +37,9 @@
       <v-btn icon href="https://twitter.com/hirooka_pro" target="_blank">
         <v-icon>mdi-twitter</v-icon>
       </v-btn>
+      <v-btn icon href="https://hirooka.pro" target="_blank">
+        <v-icon>mdi-home</v-icon>
+      </v-btn>
     </v-app-bar>
     <v-main>
       <v-container>
