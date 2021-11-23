@@ -45,8 +45,8 @@
             {{ item.name }}
           </v-chip>
         </template>
-        <template #expanded-item="{ headersc, item }">
-          <td :colspan="headersc.length">
+        <template #expanded-item="{ headers, item }">
+          <td :colspan="headers.length">
             {{ item.damages }} <!-- TODO: format-->
           </td>
         </template>
