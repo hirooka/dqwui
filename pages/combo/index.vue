@@ -3,8 +3,10 @@
     <h2>
       こころ組み合わせ
     </h2>
-    <div class="mb-4">
-      ドラクエウォークの火力ツールです。
+    <div class="my-2">
+      <p class="text-body-2">
+        最適だと考えられるこころの組み合わせを提案します。
+      </p>
     </div>
     <v-container fluid>
       <v-row align="center">
