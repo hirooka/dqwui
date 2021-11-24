@@ -143,7 +143,8 @@
             multiple
             chips
             dense
-            class="mt-n4 mb-n2 pt-0"
+            clearable
+            class="mt-n4 mb-n4 pt-0"
           >
             <template #selection="{ item }">
               <v-chip
@@ -162,12 +163,43 @@
           sm="6"
           lg="6"
         >
+          <v-autocomplete
+            v-model="selectedInclusions"
+            label="必ず含むこころ(検索入力できます)"
+            outlined
+            :items="inclusions"
+            item-text="text"
+            item-value="value"
+            multiple
+            chips
+            dense
+            clearable
+            @input="search = ''"
+            @change="search = ''"
+            class="mt-n4 mb-n4 pt-0"
+          >
+            <template #selection="{ item }">
+              <v-chip
+                small
+                close
+                @click:close="deleteInclusion(item)"
+              >
+                <span>{{ item.text }}</span>
+              </v-chip>
+            </template>
+          </v-autocomplete>
+        </v-col>
+        <v-col
+          class="d-flex"
+          cols="12"
+          sm="12"
+          lg="12"
+        >
           <v-btn
-            class="mt-n8 mb-n4 pt-0"
+            class="mt-n4 mb-0 pt-0"
             block
             color="primary"
-
-            @click="search"
+            @click="find"
           >
             しらべる
           </v-btn>
@@ -263,6 +295,10 @@ interface Exclusion {
   text: string
   value: string
 }
+interface Inclusion {
+  text: string
+  value: string
+}
 export default Vue.extend({
   async asyncData ({ app }) {
     const path = '/v1/kokoro/combos'
@@ -272,7 +308,8 @@ export default Vue.extend({
     const ksData = ks.data
     return {
       combinations: cbsData,
-      exclusions: ksData
+      exclusions: ksData,
+      inclusions: ksData
     }
   },
   data () {
@@ -324,12 +361,14 @@ export default Vue.extend({
         { text: 'ゾンビ系', value: 'ZOMBIE' }
       ],
       exclusions: [],
+      inclusions: [],
 
       selectedJob: 'BATTLE_MASTER',
       selectedAttack: 'SLASH',
       selectedAttribute: 'DEIN',
       selectedRace: 'NONE',
       selectedExclusions: [] as string[],
+      selectedInclusions: [] as string[],
 
       // TODO: change slot name by job
       headers: [
@@ -355,7 +394,7 @@ export default Vue.extend({
     }
   },
   methods: {
-    async search () {
+    async find () {
       logger.info('.')
       this.loading = true
       const path = '/v1/kokoro/combos'
@@ -367,7 +406,8 @@ export default Vue.extend({
           r: this.selectedRace,
           l: this.level,
           b: this.bride,
-          e: this.selectedExclusions.join(',')
+          e: this.selectedExclusions.join(','),
+          i: this.selectedInclusions.join(',')
         }
       })
       const data = response.data
@@ -391,6 +431,12 @@ export default Vue.extend({
       const ex = `${item.value}`
       if (this.selectedExclusions.includes(ex)) {
         this.selectedExclusions = this.selectedExclusions.filter(v => v !== ex)
+      }
+    },
+    deleteInclusion (item: Inclusion) {
+      const ex = `${item.value}`
+      if (this.selectedInclusions.includes(ex)) {
+        this.selectedInclusions = this.selectedInclusions.filter(v => v !== ex)
       }
     }
   }
