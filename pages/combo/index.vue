@@ -42,6 +42,7 @@
             item-value="value"
             dense
             class="mt-n4 mb-n4 pt-0"
+            @change="selectAttack"
           />
         </v-col>
         <v-col
@@ -59,6 +60,7 @@
             item-value="value"
             dense
             class="mt-n4 mb-n4 pt-0"
+            :disabled="healing"
           />
         </v-col>
         <v-col
@@ -76,6 +78,7 @@
             item-value="value"
             dense
             class="mt-n4 mb-n4 pt-0"
+            :disabled="healing"
           />
         </v-col>
         <v-col
@@ -135,7 +138,7 @@
         >
           <v-select
             v-model="selectedExclusions"
-            label="除外するこころ"
+            label="除外するこころ(下の表のこころを押して追加できます)"
             outlined
             :items="exclusions"
             item-text="text"
@@ -314,6 +317,7 @@ export default Vue.extend({
   },
   data () {
     return {
+      healing: false,
       level: 80,
       bride: 'フローラ',
       loading: false,
@@ -332,9 +336,12 @@ export default Vue.extend({
         { text: 'じゅもん', value: 'SPELL' },
         { text: 'こう魔斬撃', value: 'PHYSICS_SPELL_SLASH' },
         { text: 'こう魔体技', value: 'PHYSICS_SPELL_HIT' },
-        { text: 'ブレス', value: 'BREATH' }
+        { text: 'ブレス', value: 'BREATH' },
+        { text: 'じゅもん回復', value: 'HEALING_SPELL' },
+        { text: 'とくぎ回復', value: 'HEALING_SPECIALTY' }
       ],
       attributes: [
+        { text: '無属性', value: 'NONE' },
         { text: 'バギ', value: 'BAGI' },
         { text: 'デイン', value: 'DEIN' },
         { text: 'ドルマ', value: 'DORUMA' },
@@ -437,6 +444,15 @@ export default Vue.extend({
       const ex = `${item.value}`
       if (this.selectedInclusions.includes(ex)) {
         this.selectedInclusions = this.selectedInclusions.filter(v => v !== ex)
+      }
+    },
+    selectAttack () {
+      if (this.selectedAttack === 'HEALING_SPELL' || this.selectedAttack === 'HEALING_SPECIALTY') {
+        this.selectedAttribute = 'NONE'
+        this.selectedRace = 'NONE'
+        this.healing = true
+      } else {
+        this.healing = false
       }
     }
   }
