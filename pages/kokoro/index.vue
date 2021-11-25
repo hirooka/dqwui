@@ -22,7 +22,7 @@
         />
       </v-card-title>
       <v-data-table
-        :headers="headers"
+        :headers="tableHeaders"
         :items="kokoros"
         :items-per-page="20"
         class="elevation-1"
@@ -69,7 +69,7 @@ export default Vue.extend({
   data () {
     return {
       search: '',
-      headers: [
+      tableHeaders: [
         { text: 'ばんごう', value: 'number' },
         { text: 'なまえ', value: 'name' },
         { text: 'グレード', value: 'grade' },

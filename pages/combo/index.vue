@@ -177,9 +177,9 @@
             chips
             dense
             clearable
+            class="mt-n4 mb-n4 pt-0"
             @input="search = ''"
             @change="search = ''"
-            class="mt-n4 mb-n4 pt-0"
           >
             <template #selection="{ item }">
               <v-chip
