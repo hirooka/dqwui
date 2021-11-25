@@ -94,6 +94,7 @@
             type="number"
             min="30"
             max="80"
+            @blur="validateLevel"
             dense
             class="mt-n4 mb-n4 pt-0"
           >
@@ -455,6 +456,13 @@ export default Vue.extend({
         this.healing = true
       } else {
         this.healing = false
+      }
+    },
+    validateLevel () {
+      if (this.level > 80) {
+        this.level = 80
+      } else if (this.level < 30) {
+        this.level = 30
       }
     }
   }

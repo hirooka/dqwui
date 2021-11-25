@@ -40,6 +40,7 @@
       <v-btn icon href="https://hirooka.pro" target="_blank">
         <v-icon>mdi-home</v-icon>
       </v-btn>
+      <div class="text-caption">{{ commitId }}</div>
     </v-app-bar>
     <v-main>
       <v-container>
@@ -79,7 +80,8 @@ export default {
           to: '/kokoro'
         }
       ],
-      title: 'dqw'
+      title: 'dqw',
+      commitId: process.env.NUXT_ENV_GIT_COMMIT_ID
     }
   }
 }
