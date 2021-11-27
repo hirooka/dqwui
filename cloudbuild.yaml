@@ -6,7 +6,7 @@ steps:
     args:
       - 'run'
       - 'deploy'
-      - 'dqwapi'
+      - 'dqwui'
       - '--image'
       - 'asia-northeast1-docker.pkg.dev/hirooka-pro/dqwui/dqwui'
       - '--region'
