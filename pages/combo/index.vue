@@ -94,9 +94,9 @@
             type="number"
             min="30"
             max="80"
-            @blur="validateLevel"
             dense
             class="mt-n4 mb-n4 pt-0"
+            @blur="validateLevel"
           >
             80
           </v-text-field>

@@ -45,7 +45,56 @@
         </template>
         <template #expanded-item="{ headers, item }">
           <td :colspan="headers.length">
-            {{ item.damages }} <!-- TODO: format-->
+            <div v-if="item.damages.length > 0">
+              こうげき
+            </div>
+            <div v-else />
+            <ui>
+              <li v-for="(d, index) in item.damages" :key="index">
+                <span v-if="d.attribute ==='BAGI'">バギ属性</span>
+                <span v-else-if="d.attribute ==='DEIN'">デイン属性</span>
+                <span v-else-if="d.attribute ==='DORUMA'">ドルマ属性</span>
+                <span v-else-if="d.attribute ==='GIRA'">ギラ属性</span>
+                <span v-else-if="d.attribute ==='HYADO'">ヒャド属性</span>
+                <span v-else-if="d.attribute ==='IO'">イオ属性</span>
+                <span v-else-if="d.attribute ==='JIBARIA'">ジバリア属性</span>
+                <span v-else-if="d.attribute ==='MERA'">メラ属性</span>
+                <span v-else />
+                <span v-if="d.race ==='ANIMAL'">けもの系</span>
+                <span v-else-if="d.race ==='BIRD'">鳥系</span>
+                <span v-else-if="d.race ==='DEVIL'">悪魔系</span>
+                <span v-else-if="d.race ==='DRAGON'">ドラゴン系</span>
+                <span v-else-if="d.race ==='ELEMENT'">エレメント系</span>
+                <span v-else-if="d.race ==='INSECT'">虫系</span>
+                <span v-else-if="d.race ==='MACHINE'">マシン系</span>
+                <span v-else-if="d.race ==='MATERIAL'">マテリアル系</span>
+                <span v-else-if="d.race ==='PHANTOM'">怪人系</span>
+                <span v-else-if="d.race ==='PLANT'">植物系</span>
+                <span v-else-if="d.race ==='SLIME'">スライム系</span>
+                <span v-else-if="d.race ==='WATER'">水系</span>
+                <span v-else-if="d.race ==='ZOMBIE'">ゾンビ系</span>
+                <span v-else />
+                <span v-if="d.attack ==='SLASH'">斬撃</span>
+                <span v-else-if="d.attack ==='HIT'">体技</span>
+                <span v-else-if="d.attack ==='SPELL'">じゅもん</span>
+                <span v-else-if="d.attack ==='BREATH'">ブレス</span>
+                <span v-else />
+                <span>ダメージ {{ d.magnification }}%</span>
+              </li>
+            </ui>
+            <div v-if="item.healings.length > 0">
+              かいふく
+            </div>
+            <div v-else />
+            <ui>
+              <li v-for="(h, index) in item.healings" :key="index">
+                <span v-if="h.type ==='SKILL'">スキル</span>
+                <span v-else-if="h.type ==='SPECIALTY'">とくぎ</span>
+                <span v-else-if="h.type ==='SPELL'">じゅもん</span>
+                <span v-else />
+                <span>HP回復効果 {{ h.magnification }}%</span>
+              </li>
+            </ui>
           </td>
         </template>
       </v-data-table>
