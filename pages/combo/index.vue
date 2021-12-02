@@ -396,6 +396,7 @@ export default Vue.extend({
         { text: 'きようさ', value: 'dx' },
         { text: 'こうげき倍率', value: 'attackMag' },
         { text: '属性倍率', value: 'attributeMag' },
+        { text: '系統倍率', value: 'raceMag' },
         { text: 'スキル回復倍率', value: 'healingSkillMag' },
         { text: 'じゅもん回復倍率', value: 'healingSpellMag' },
         { text: 'とくぎ回復倍率', value: 'healingSpecialtyMag' }
