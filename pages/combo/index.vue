@@ -308,7 +308,7 @@ export default Vue.extend({
     const path = '/v1/kokoro/combos'
     const cbs = await app.$axios.get(path)
     const cbsData = cbs.data
-    const ks = await app.$axios.get('/v1/kokoros/k')
+    const ks = await app.$axios.get('/v1/kokoros/min')
     const ksData = ks.data
     return {
       combinations: cbsData,
