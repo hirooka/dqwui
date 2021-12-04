@@ -4,7 +4,7 @@
       <v-col cols="12" sm="8" md="6">
         <v-card>
           <v-card-title class="headline">
-            ドラクエウォークのこころ火力計算ツール<v-icon>mdi-beta</v-icon>
+            ドラクエウォーク最適こころ計算ツール<v-icon>mdi-beta</v-icon>
           </v-card-title>
           <v-card-text>
             <p>ドラクエウォークの上級職において最適だと考えられるこころの組み合わせを提案します。</p>

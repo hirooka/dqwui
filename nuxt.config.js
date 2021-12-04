@@ -10,15 +10,23 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s',
-    title: 'dqw',
+    title: 'DQW最適こころ',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'en',
+      prefix: 'og: http://ogp.me/ns#'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { hid: 'description', name: 'description', content: 'ドラクエウォークの上級職において最適だと考えられるこころの組み合わせを提案します。' },
+      { name: 'format-detection', content: 'telephone=no' },
+      { hid: 'og:type', property: 'og:type', content: 'website' },
+      { hid: 'og:site_name', property: 'og:site_name', content: 'ドラクエウォーク最適こころ計算ツール' },
+      { hid: 'og:title', property: 'og:title', content: 'DQW最適こころ' },
+      { hid: 'og:description', property: 'og:description', content: 'ドラクエウォークの上級職において最適だと考えられるこころの組み合わせを提案します。' },
+      { hid: 'og:url', property: 'og:url', content: 'https://dqw.hirooka.pro' },
+      { hid: 'og:image', property: 'og:image', content: 'https://dqw.hirooka.pro/icon.jpg' },
+      { name: 'twitter:card', content: 'summary' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
