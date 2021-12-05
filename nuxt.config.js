@@ -12,8 +12,8 @@ export default {
     titleTemplate: '%s',
     title: 'DQW最適こころ',
     htmlAttrs: {
-      lang: 'en',
-      prefix: 'og: http://ogp.me/ns#'
+      lang: 'ja',
+      prefix: 'og: https://ogp.me/ns#'
     },
     meta: [
       { charset: 'utf-8' },
