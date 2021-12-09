@@ -399,6 +399,8 @@ export default Vue.extend({
         { text: 'かいふく魔力', value: 'ds' },
         { text: 'すばやさ', value: 'sp' },
         { text: 'きようさ', value: 'dx' },
+        { text: 'ちから+こうげき魔力', value: 'opos' },
+        { text: 'ちから+きようさ', value: 'opdx' },
         { text: 'こうげき倍率', value: 'attackMag' },
         { text: '属性倍率', value: 'attributeMag' },
         { text: '系統倍率', value: 'raceMag' },
