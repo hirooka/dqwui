@@ -23,7 +23,7 @@
       </v-card-title>
       <v-data-table
         :headers="tableHeaders"
-        :items="kokoros"
+        :items="extendedKokoros"
         :items-per-page="20"
         class="elevation-1"
         mobile-breakpoint="0"
@@ -131,9 +131,20 @@ export default Vue.extend({
         { text: 'かいふく魔力', value: 'ds' },
         { text: 'きようさ', value: 'dx' },
         { text: 'すばやさ', value: 'sp' },
+        { text: 'ちから+こう魔', value: 'opos' },
+        { text: 'ちから+きようさ', value: 'opdx' },
         { text: '倍率情報', value: 'data-table-expand' }
       ],
       kokoros: []
+    }
+  },
+  computed: {
+    extendedKokoros () {
+      return this.kokoros.map(kokoro => ({
+        ...kokoro,
+        opos: kokoro.op + kokoro.os,
+        opdx: kokoro.op + kokoro.dx
+      }))
     }
   },
   methods: {

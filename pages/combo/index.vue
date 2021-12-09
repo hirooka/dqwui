@@ -289,6 +289,9 @@
               :items="dialogitems"
               :items-per-page="8"
               hide-default-footer
+              disable-sort
+              mobile-breakpoint="0"
+              dense
               class="elevation-1"
             />
           </v-card-text>
