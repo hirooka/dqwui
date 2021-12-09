@@ -266,7 +266,45 @@
         </template>
       </v-data-table>
     </v-container>
-
+    <v-container fluid>
+      <v-dialog
+        v-model="dialog"
+        width="640"
+      >
+        <template #activator="{ on, attrs }">
+          <v-btn
+            color="secondary"
+            dark
+            v-bind="attrs"
+            v-on="on"
+          >
+            計算方法
+          </v-btn>
+        </template>
+        <v-card>
+          <v-card-title />
+          <v-card-text>
+            <v-data-table
+              :headers="dialogheaders"
+              :items="dialogitems"
+              :items-per-page="8"
+              hide-default-footer
+              class="elevation-1"
+            />
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer />
+            <v-btn
+              color="primary"
+              text
+              @click="dialog = false"
+            >
+              閉じる
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </v-container>
     <v-dialog
       v-model="loading"
       fullscreen
@@ -408,7 +446,46 @@ export default Vue.extend({
         { text: 'じゅもん回復倍率', value: 'healingSpellMag' },
         { text: 'とくぎ回復倍率', value: 'healingSpecialtyMag' }
       ],
-      combinations: []
+      combinations: [],
+      dialog: false,
+      dialogheaders: [
+        { text: 'タイプ', value: 'type' },
+        { text: '説明', value: 'description' }
+      ],
+      dialogitems: [
+        {
+          type: '斬撃',
+          description: 'ちからの合計 x 斬撃倍率の合計 x 属性斬撃倍率と属性倍率の合計 x 系統倍率の合計'
+        },
+        {
+          type: '体技',
+          description: 'ちからの合計 x 体技倍率の合計 x 属性体技倍率と属性倍率の合計 x 系統倍率の合計'
+        },
+        {
+          type: 'じゅもん',
+          description: 'こうげき魔力の合計 x じゅもん倍率の合計 x 属性じゅもん倍率と属性倍率の合計 x 系統倍率の合計'
+        },
+        {
+          type: 'こうげき力とこうげき魔力を込めた斬撃',
+          description: 'ちからとこうげき魔力の合計 x 斬撃倍率の合計 x 属性斬撃倍率と属性倍率の合計 x 系統倍率の合計'
+        },
+        {
+          type: 'こうげき力とこうげき魔力を込めた体技',
+          description: 'ちからとこうげき魔力の合計 x 体技倍率の合計 x 属性体技倍率と属性倍率の合計 x 系統倍率の合計'
+        },
+        {
+          type: 'ブレス',
+          description: 'ちからときようさの合計 x ブレス倍率の合計 x 属性ブレス倍率と属性倍率の合計 x 系統倍率の合計'
+        },
+        {
+          type: 'じゅもん回復',
+          description: 'かいふく魔力の合計 x スキル回復倍率の合計 x じゅもん回復倍率の合計'
+        },
+        {
+          type: 'とくぎ回復',
+          description: 'かいふく魔力の合計 x スキル回復倍率の合計 x とくぎ回復倍率の合計'
+        }
+      ]
     }
   },
   methods: {
