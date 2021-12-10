@@ -139,8 +139,8 @@ export default Vue.extend({
     }
   },
   computed: {
-    extendedKokoros () {
-      return this.kokoros.map(kokoro => ({
+    extendedKokoros (): any {
+      return this.kokoros.map((kokoro: any) => ({
         ...kokoro,
         opos: kokoro.op + kokoro.os,
         opdx: kokoro.op + kokoro.dx
