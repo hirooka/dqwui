@@ -93,7 +93,7 @@
             outlined
             type="number"
             min="30"
-            max="80"
+            max="85"
             dense
             class="mt-n4 mb-n4 pt-0"
             @blur="validateLevel"
@@ -547,7 +547,7 @@ export default Vue.extend({
       }
     },
     validateLevel () {
-      if (this.level > 80) {
+      if (this.level > 85) {
         this.level = 80
       } else if (this.level < 30) {
         this.level = 30
