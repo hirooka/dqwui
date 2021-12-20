@@ -149,6 +149,7 @@
             dense
             clearable
             class="mt-n4 mb-n4 pt-0"
+            @blur="changeSelectedExclusions"
           >
             <template #selection="{ item }">
               <v-chip
@@ -181,6 +182,7 @@
             class="mt-n4 mb-n4 pt-0"
             @input="search = ''"
             @change="search = ''"
+            @blur="changeSelectedInclusions"
           >
             <template #selection="{ item }">
               <v-chip
@@ -332,6 +334,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import 'cookie-universal-nuxt'
 import logger from '~/plugins/logger'
 interface Slot {
   type: string
@@ -356,10 +359,24 @@ export default Vue.extend({
     // const cbsData = cbs.data
     const ks = await app.$axios.get('/v1/kokoros/min')
     const ksData = ks.data
+    let e
+    if (app.$cookies.get('exclusions')) {
+      e = app.$cookies.get('exclusions').split(',')
+    } else {
+      e = []
+    }
+    let i
+    if (app.$cookies.get('inclusions')) {
+      i = app.$cookies.get('inclusions').split(',')
+    } else {
+      i = []
+    }
     return {
       // combinations: cbsData,
       exclusions: ksData,
-      inclusions: ksData
+      inclusions: ksData,
+      selectedExclusions: e,
+      selectedInclusions: i
     }
   },
   data () {
@@ -519,22 +536,31 @@ export default Vue.extend({
         return 'white'
       }
     },
+    changeSelectedExclusions () {
+      this.$cookies.set('exclusions', this.selectedExclusions.join(','))
+    },
     addExclusion (slot: Slot) {
       const ex = `${slot.number}${slot.grade.toLowerCase()}`
       if (!this.selectedExclusions.includes(ex)) {
         this.selectedExclusions.push(`${slot.number}${slot.grade.toLowerCase()}`)
+        this.$cookies.set('exclusions', this.selectedExclusions.join(','))
       }
     },
     deleteExclusion (item: Exclusion) {
       const ex = `${item.value}`
       if (this.selectedExclusions.includes(ex)) {
         this.selectedExclusions = this.selectedExclusions.filter(v => v !== ex)
+        this.$cookies.set('exclusions', this.selectedExclusions.join(','))
       }
+    },
+    changeSelectedInclusions () {
+      this.$cookies.set('inclusions', this.selectedInclusions.join(','))
     },
     deleteInclusion (item: Inclusion) {
       const ex = `${item.value}`
       if (this.selectedInclusions.includes(ex)) {
         this.selectedInclusions = this.selectedInclusions.filter(v => v !== ex)
+        this.$cookies.set('inclusions', this.selectedInclusions.join(','))
       }
     },
     selectAttack () {
