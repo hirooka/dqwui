@@ -93,12 +93,12 @@
             outlined
             type="number"
             min="30"
-            max="85"
+            max="86"
             dense
             class="mt-n4 mb-n4 pt-0"
             @blur="validateLevel"
           >
-            80
+            82
           </v-text-field>
         </v-col>
         <v-col
@@ -573,7 +573,7 @@ export default Vue.extend({
       }
     },
     validateLevel () {
-      if (this.level > 85) {
+      if (this.level > 86) {
         this.level = 80
       } else if (this.level < 30) {
         this.level = 30
