@@ -98,7 +98,7 @@
             class="mt-n4 mb-n4 pt-0"
             @blur="validateLevel"
           >
-            82
+            85
           </v-text-field>
         </v-col>
         <v-col
@@ -382,7 +382,7 @@ export default Vue.extend({
   data () {
     return {
       healing: false,
-      level: 80,
+      level: 85,
       bride: 'フローラ',
       loading: false,
       jobs: [
@@ -574,7 +574,7 @@ export default Vue.extend({
     },
     validateLevel () {
       if (this.level > 86) {
-        this.level = 80
+        this.level = 85
       } else if (this.level < 30) {
         this.level = 30
       }

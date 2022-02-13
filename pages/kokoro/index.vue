@@ -123,6 +123,7 @@ export default Vue.extend({
         { text: 'なまえ', value: 'name' },
         { text: 'グレード', value: 'grade' },
         { text: 'タイプ', value: 'type' },
+        { text: 'コスト', value: 'cost' },
         { text: 'さいだいHP', value: 'hp' },
         { text: 'さいだいMP', value: 'mp' },
         { text: 'ちから', value: 'op' },
