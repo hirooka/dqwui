@@ -220,7 +220,7 @@
       <v-data-table
         :headers="headers"
         :items="combinations"
-        :items-per-page="10"
+        :items-per-page="20"
         class="elevation-1"
         mobile-breakpoint="0"
         dense
@@ -371,12 +371,43 @@ export default Vue.extend({
     } else {
       i = []
     }
+
+    let j = 'BATTLE_MASTER'
+    if (app.$cookies.get('job')) {
+      j = app.$cookies.get('job')
+    }
+    let atk = 'SLASH'
+    if (app.$cookies.get('attack')) {
+      atk = app.$cookies.get('attack')
+    }
+    let atr = 'DEIN'
+    if (app.$cookies.get('attribute')) {
+      atr = app.$cookies.get('attribute')
+    }
+    let r = 'NONE'
+    if (app.$cookies.get('race')) {
+      r = app.$cookies.get('race')
+    }
+    let l = 85
+    if (app.$cookies.get('level')) {
+      l = app.$cookies.get('level')
+    }
+    let b = 'フローラ'
+    if (app.$cookies.get('bride')) {
+      b = app.$cookies.get('bride')
+    }
     return {
       // combinations: cbsData,
       exclusions: ksData,
       inclusions: ksData,
       selectedExclusions: e,
-      selectedInclusions: i
+      selectedInclusions: i,
+      selectedJob: j,
+      selectedAttack: atk,
+      selectedAttribute: atr,
+      selectedRace: r,
+      level: l,
+      bride: b
     }
   },
   data () {
@@ -528,6 +559,12 @@ export default Vue.extend({
       const data = response.data
       this.combinations = data
       this.loading = false
+      this.$cookies.set('job', this.selectedJob)
+      this.$cookies.set('attack', this.selectedAttack)
+      this.$cookies.set('attribute', this.selectedAttribute)
+      this.$cookies.set('race', this.selectedRace)
+      this.$cookies.set('level', this.level)
+      this.$cookies.set('bride', this.bride)
     },
     getTextColor (color: string) {
       if (color === 'yellow') {
