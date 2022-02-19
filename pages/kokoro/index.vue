@@ -82,6 +82,10 @@
                 <span>ダメージ {{ d.magnification }}%</span>
               </li>
             </ui>
+            <div v-if="item.chr > 0">
+              会心率 {{ item.chr }}%
+            </div>
+            <div v-else />
             <div v-if="item.healings.length > 0">
               かいふく
             </div>
@@ -93,6 +97,44 @@
                 <span v-else-if="h.type ==='SPELL'">じゅもん</span>
                 <span v-else />
                 <span>HP回復効果 {{ h.magnification }}%</span>
+              </li>
+            </ui>
+            <div v-if="item.resistances.length > 0">
+              耐性
+            </div>
+            <div v-else />
+            <ui>
+              <li v-for="(r, index) in item.resistances" :key="index">
+                <span v-if="r.attribute ==='BAGI'">バギ属性</span>
+                <span v-else-if="r.attribute ==='DEIN'">デイン属性</span>
+                <span v-else-if="r.attribute ==='DORUMA'">ドルマ属性</span>
+                <span v-else-if="r.attribute ==='GIRA'">ギラ属性</span>
+                <span v-else-if="r.attribute ==='HYADO'">ヒャド属性</span>
+                <span v-else-if="r.attribute ==='IO'">イオ属性</span>
+                <span v-else-if="r.attribute ==='JIBARIA'">ジバリア属性</span>
+                <span v-else-if="r.attribute ==='MERA'">メラ属性</span>
+                <span v-else-if="r.attribute ==='ALL' && r.race ==='NONE'">全属性</span>
+                <span v-else />
+                <span v-if="r.race ==='ANIMAL'">けもの系</span>
+                <span v-else-if="r.race ==='BIRD'">鳥系</span>
+                <span v-else-if="r.race ==='DEVIL'">悪魔系</span>
+                <span v-else-if="r.race ==='DRAGON'">ドラゴン系</span>
+                <span v-else-if="r.race ==='ELEMENT'">エレメント系</span>
+                <span v-else-if="r.race ==='INSECT'">虫系</span>
+                <span v-else-if="r.race ==='MACHINE'">マシン系</span>
+                <span v-else-if="r.race ==='MATERIAL'">マテリアル系</span>
+                <span v-else-if="r.race ==='PHANTOM'">怪人系</span>
+                <span v-else-if="r.race ==='PLANT'">植物系</span>
+                <span v-else-if="r.race ==='SLIME'">スライム系</span>
+                <span v-else-if="r.race ==='WATER'">水系</span>
+                <span v-else-if="r.race ==='ZOMBIE'">ゾンビ系</span>
+                <span v-else />
+                <span v-if="r.attack ==='SLASH'">斬撃</span>
+                <span v-else-if="r.attack ==='HIT'">体技</span>
+                <span v-else-if="r.attack ==='SPELL'">じゅもん</span>
+                <span v-else-if="r.attack ==='BREATH'">ブレス</span>
+                <span v-else />
+                <span>耐性 {{ r.magnification }}%</span>
               </li>
             </ui>
           </td>
