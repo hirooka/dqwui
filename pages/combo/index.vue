@@ -233,7 +233,7 @@
             small
             @click="addExclusion(item.slots[0])"
           >
-            {{ item.slots[0].name }}{{ item.slots[0].grade }}
+            {{ item.slots[0].name }}{{ item.slots[0].grade }}({{ item.slots[0].cost }})
           </v-chip>
         </template>
         <template #[`item.s1`]="{item}">
@@ -243,7 +243,7 @@
             small
             @click="addExclusion(item.slots[1])"
           >
-            {{ item.slots[1].name }}{{ item.slots[1].grade }}
+            {{ item.slots[1].name }}{{ item.slots[1].grade }}({{ item.slots[1].cost }})
           </v-chip>
         </template>
         <template #[`item.s2`]="{item}">
@@ -253,7 +253,7 @@
             small
             @click="addExclusion(item.slots[2])"
           >
-            {{ item.slots[2].name }}{{ item.slots[2].grade }}
+            {{ item.slots[2].name }}{{ item.slots[2].grade }}({{ item.slots[2].cost }})
           </v-chip>
         </template>
         <template #[`item.s3`]="{item}">
@@ -263,7 +263,7 @@
             small
             @click="addExclusion(item.slots[3])"
           >
-            {{ item.slots[3].name }}{{ item.slots[3].grade }}
+            {{ item.slots[3].name }}{{ item.slots[3].grade }}({{ item.slots[3].cost }})
           </v-chip>
         </template>
       </v-data-table>
@@ -423,7 +423,8 @@ export default Vue.extend({
         { text: 'パラディン', value: 'PALADIN' },
         { text: '魔法戦士', value: 'ARMAMENTALIST' },
         { text: 'スーパースター', value: 'SUPERSTAR' },
-        { text: '海賊', value: 'PIRATE' }
+        { text: '海賊', value: 'PIRATE' },
+        { text: 'まものマスター', value: 'MONSTER_MASTER' }
       ],
       attacks: [
         { text: '斬撃', value: 'SLASH' },
