@@ -5962,6 +5962,7 @@ __metadata:
     eslint-plugin-nuxt: 3.1.0
     eslint-plugin-vue: 8.4.1
     jest: 27.5.0
+    node-gyp: ^9.0.0
     nuxt: 2.15.8
     ts-jest: 27.1.3
     vue-jest: 3.0.7
@@ -10285,7 +10286,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-gyp@npm:latest":
+"node-gyp@npm:^9.0.0, node-gyp@npm:latest":
   version: 9.0.0
   resolution: "node-gyp@npm:9.0.0"
   dependencies:
@@ -14171,7 +14172,7 @@ __metadata:
 
 "typescript@patch:typescript@~4.2#~builtin<compat/typescript>":
   version: 4.2.4
-  resolution: "typescript@patch:typescript@npm%3A4.2.4#~builtin<compat/typescript>::version=4.2.4&hash=bda367"
+  resolution: "typescript@patch:typescript@npm%3A4.2.4#~builtin<compat/typescript>::version=4.2.4&hash=7ad353"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
