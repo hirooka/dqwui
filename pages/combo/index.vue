@@ -98,7 +98,7 @@
             class="mt-n4 mb-n4 pt-0"
             @blur="validateLevel"
           >
-            85
+            90
           </v-text-field>
         </v-col>
         <v-col
