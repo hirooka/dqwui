@@ -59,6 +59,7 @@
                 <span v-else-if="d.attribute ==='IO'">イオ属性</span>
                 <span v-else-if="d.attribute ==='JIBARIA'">ジバリア属性</span>
                 <span v-else-if="d.attribute ==='MERA'">メラ属性</span>
+                <span v-else-if="d.attribute ==='ALL'">全属性</span>
                 <span v-else />
                 <span v-if="d.race ==='ANIMAL'">けもの系</span>
                 <span v-else-if="d.race ==='BIRD'">鳥系</span>
@@ -70,6 +71,7 @@
                 <span v-else-if="d.race ==='MATERIAL'">マテリアル系</span>
                 <span v-else-if="d.race ==='PHANTOM'">怪人系</span>
                 <span v-else-if="d.race ==='PLANT'">植物系</span>
+                <span v-else-if="d.race ==='SECRET'">？？？？系</span>
                 <span v-else-if="d.race ==='SLIME'">スライム系</span>
                 <span v-else-if="d.race ==='WATER'">水系</span>
                 <span v-else-if="d.race ==='ZOMBIE'">ゾンビ系</span>
@@ -125,6 +127,7 @@
                 <span v-else-if="r.race ==='MATERIAL'">マテリアル系</span>
                 <span v-else-if="r.race ==='PHANTOM'">怪人系</span>
                 <span v-else-if="r.race ==='PLANT'">植物系</span>
+                <span v-else-if="r.race ==='SECRET'">？？？？系</span>
                 <span v-else-if="r.race ==='SLIME'">スライム系</span>
                 <span v-else-if="r.race ==='WATER'">水系</span>
                 <span v-else-if="r.race ==='ZOMBIE'">ゾンビ系</span>

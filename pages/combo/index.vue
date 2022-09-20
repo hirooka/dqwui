@@ -459,6 +459,7 @@ export default Vue.extend({
         { text: '物質系', value: 'MATERIAL' },
         { text: '怪人系', value: 'PHANTOM' },
         { text: '植物系', value: 'PLANT' },
+        { text: '？？？？系', value: 'SECRET' },
         { text: 'スライム系', value: 'SLIME' },
         { text: '水系', value: 'WATER' },
         { text: 'ゾンビ系', value: 'ZOMBIE' }
