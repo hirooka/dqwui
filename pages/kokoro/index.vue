@@ -36,7 +36,7 @@
       >
         <template #[`item.name`]="{item}">
           <v-chip
-            :color="item.type.toLowerCase()"
+            :color="getCircleColor(item.type.toLowerCase())"
             :text-color="getTextColor(item.type.toLowerCase())"
             small
           >
@@ -59,7 +59,7 @@
                 <span v-else-if="d.attribute ==='IO'">イオ属性</span>
                 <span v-else-if="d.attribute ==='JIBARIA'">ジバリア属性</span>
                 <span v-else-if="d.attribute ==='MERA'">メラ属性</span>
-                <span v-else-if="d.attribute ==='ALL'">全属性</span>
+                <span v-else-if="d.attack ==='ALL' && d.attribute ==='ALL' && d.race ==='NONE'">全属性</span>
                 <span v-else />
                 <span v-if="d.race ==='ANIMAL'">けもの系</span>
                 <span v-else-if="d.race ==='BIRD'">鳥系</span>
@@ -199,6 +199,13 @@ export default Vue.extend({
         return 'black'
       } else {
         return 'white'
+      }
+    },
+    getCircleColor (color: string) {
+      if (color === 'rainbow') {
+        return 'black'
+      } else {
+        return color
       }
     }
   }

@@ -388,7 +388,7 @@ export default Vue.extend({
     if (app.$cookies.get('race')) {
       r = app.$cookies.get('race')
     }
-    let l = 85
+    let l = 90
     if (app.$cookies.get('level')) {
       l = app.$cookies.get('level')
     }
@@ -413,7 +413,7 @@ export default Vue.extend({
   data () {
     return {
       healing: false,
-      level: 85,
+      level: 90,
       bride: 'フローラ',
       loading: false,
       jobs: [
