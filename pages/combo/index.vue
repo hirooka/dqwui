@@ -228,7 +228,7 @@
       >
         <template #[`item.s0`]="{item}">
           <v-chip
-            :color="item.slots[0].color.toLowerCase()"
+            :color="getCircleColor(item.slots[0].color.toLowerCase())"
             :text-color="getTextColor(item.slots[0].color.toLowerCase())"
             small
             @click="addExclusion(item.slots[0])"
@@ -238,7 +238,7 @@
         </template>
         <template #[`item.s1`]="{item}">
           <v-chip
-            :color="item.slots[1].color.toLowerCase()"
+            :color="getCircleColor(item.slots[1].color.toLowerCase())"
             :text-color="getTextColor(item.slots[1].color.toLowerCase())"
             small
             @click="addExclusion(item.slots[1])"
@@ -248,7 +248,7 @@
         </template>
         <template #[`item.s2`]="{item}">
           <v-chip
-            :color="item.slots[2].color.toLowerCase()"
+            :color="getCircleColor(item.slots[2].color.toLowerCase())"
             :text-color="getTextColor(item.slots[2].color.toLowerCase())"
             small
             @click="addExclusion(item.slots[2])"
@@ -258,7 +258,7 @@
         </template>
         <template #[`item.s3`]="{item}">
           <v-chip
-            :color="item.slots[3].color.toLowerCase()"
+            :color="getCircleColor(item.slots[3].color.toLowerCase())"
             :text-color="getTextColor(item.slots[3].color.toLowerCase())"
             small
             @click="addExclusion(item.slots[3])"
@@ -573,6 +573,13 @@ export default Vue.extend({
         return 'black'
       } else {
         return 'white'
+      }
+    },
+    getCircleColor (color: string) {
+      if (color === 'rainbow') {
+        return 'black'
+      } else {
+        return color
       }
     },
     changeSelectedExclusions () {
