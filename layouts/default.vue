@@ -73,7 +73,12 @@ export default {
         },
         {
           icon: 'mdi-heart',
-          title: 'こころ組み合わせ',
+          title: '特級職こころ',
+          to: '/combo/5'
+        },
+        {
+          icon: 'mdi-heart-outline',
+          title: '上級職こころ',
           to: '/combo'
         },
         {

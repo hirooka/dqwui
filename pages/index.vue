@@ -13,10 +13,22 @@
             <v-btn
               color="primary"
               nuxt
+              to="/combo/5"
+              block
+              class="my-4"
+            >
+              こころ組み合わせ(特級職)
+            </v-btn>
+          </v-card-actions>
+          <v-card-actions>
+            <v-btn
+              color="primary"
+              nuxt
               to="/combo"
               block
+              class="my-4"
             >
-              こころ組み合わせ
+              こころ組み合わせ(上級職)
             </v-btn>
           </v-card-actions>
           <v-card-actions>
