@@ -566,12 +566,12 @@ export default Vue.extend({
       const data = response.data
       this.combinations = data
       this.loading = false
-      this.$cookies.set('job', this.selectedJob)
-      this.$cookies.set('attack', this.selectedAttack)
-      this.$cookies.set('attribute', this.selectedAttribute)
-      this.$cookies.set('race', this.selectedRace)
-      this.$cookies.set('level', this.level)
-      this.$cookies.set('bride', this.bride)
+      this.$cookies.set('job5', this.selectedJob)
+      this.$cookies.set('attack5', this.selectedAttack)
+      this.$cookies.set('attribute5', this.selectedAttribute)
+      this.$cookies.set('race5', this.selectedRace)
+      this.$cookies.set('level5', this.level)
+      this.$cookies.set('bride5', this.bride)
     },
     getTextColor (color: string) {
       if (color === 'yellow') {
