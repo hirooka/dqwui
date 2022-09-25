@@ -25,6 +25,7 @@
             item-value="value"
             dense
             class="mt-n4 mb-n4 pt-0"
+            @change="selectJob"
           />
         </v-col>
         <v-col
@@ -96,7 +97,7 @@
             max="91"
             dense
             class="mt-n4 mb-n4 pt-0"
-            @blur="validateLevel"
+            @blur="validateLevel(item)"
           >
             90
           </v-text-field>
@@ -372,7 +373,7 @@ export default Vue.extend({
       i = []
     }
 
-    let j = 'BATTLE_MASTER'
+    let j = 'GOD_HAND'
     if (app.$cookies.get('job')) {
       j = app.$cookies.get('job')
     }
@@ -417,6 +418,8 @@ export default Vue.extend({
       bride: 'フローラ',
       loading: false,
       jobs: [
+        { text: 'ゴッドハンド', value: 'GOD_HAND' },
+        { text: '魔賢導師？', value: 'MAKENDOUSHI' },
         { text: 'バトルマスター', value: 'BATTLE_MASTER' },
         { text: 'レンジャー', value: 'RANGER' },
         { text: '賢者', value: 'SAGE' },
@@ -609,6 +612,13 @@ export default Vue.extend({
         this.$cookies.set('inclusions', this.selectedInclusions.join(','))
       }
     },
+    selectJob () {
+      if (this.selectedJob === 'GOD_HAND' || this.selectedJob === 'MAKENDOUSHI') {
+        this.level = 50
+      } else {
+        this.level = 90
+      }
+    },
     selectAttack () {
       if (this.selectedAttack === 'HEALING_SPELL' || this.selectedAttack === 'HEALING_SPECIALTY') {
         this.selectedAttribute = 'NONE'
@@ -619,10 +629,18 @@ export default Vue.extend({
       }
     },
     validateLevel () {
-      if (this.level > 91) {
-        this.level = 90
-      } else if (this.level < 30) {
-        this.level = 30
+      if (this.selectedJob === 'GOD_HAND' || this.selectedJob === 'MAKENDOUSHI') {
+        if (this.level > 51) {
+          this.level = 50
+        } else if (this.level < 30) {
+          this.level = 30
+        }
+      } else if (this.selectedJob === 'BATTLE_MASTER' || this.selectedJob === 'RANGER' || this.selectedJob === 'SAGE' || this.selectedJob === 'ARMAMENTALIST' || this.selectedJob === 'PIRATE' || this.selectedJob === 'MONSTER_MASTER') {
+        if (this.level > 91) {
+          this.level = 90
+        } else if (this.level < 30) {
+          this.level = 30
+        }
       }
     }
   }
