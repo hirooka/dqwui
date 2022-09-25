@@ -7,7 +7,7 @@
             ドラクエウォーク最適こころ計算ツール<v-icon>mdi-beta</v-icon>
           </v-card-title>
           <v-card-text>
-            <p>ドラクエウォークの上級職において最適だと考えられるこころの組み合わせを提案します。</p>
+            <p>ドラクエウォークの特級職と上級職において最適だと考えられるこころの組み合わせを提案します。</p>
           </v-card-text>
           <v-card-actions>
             <v-btn
@@ -15,7 +15,7 @@
               nuxt
               to="/combo/5"
               block
-              class="my-4"
+              class="my-2"
             >
               こころ組み合わせ(特級職)
             </v-btn>
@@ -26,7 +26,7 @@
               nuxt
               to="/combo"
               block
-              class="my-4"
+              class="my-2"
             >
               こころ組み合わせ(上級職)
             </v-btn>
@@ -37,7 +37,7 @@
               nuxt
               to="/kokoro"
               block
-              class="my-4"
+              class="my-2"
             >
               こころ一覧
             </v-btn>

@@ -427,8 +427,8 @@ export default Vue.extend({
       bride: 'フローラ',
       loading: false,
       jobs: [
-        { text: 'ゴッドハンド', value: 'GOD_HAND' },
-        { text: '天地雷鳴士', value: 'SUMMONER' }
+        { text: 'ゴッドハンド', value: 'GOD_HAND' }
+        // ,{ text: '天地雷鳴士', value: 'SUMMONER' }
       ],
       attacks: [
         { text: '斬撃', value: 'SLASH' },
