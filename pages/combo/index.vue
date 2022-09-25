@@ -635,7 +635,7 @@ export default Vue.extend({
         } else if (this.level < 30) {
           this.level = 30
         }
-      } else {
+      } else if (this.selectedJob === 'BATTLE_MASTER' || this.selectedJob === 'RANGER' || this.selectedJob === 'SAGE' || this.selectedJob === 'ARMAMENTALIST' || this.selectedJob === 'PIRATE' || this.selectedJob === 'MONSTER_MASTER') {
         if (this.level > 91) {
           this.level = 90
         } else if (this.level < 30) {
