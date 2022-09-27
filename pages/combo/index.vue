@@ -93,7 +93,7 @@
             label="レベル"
             outlined
             type="number"
-            min="30"
+            min="1"
             max="91"
             dense
             class="mt-n4 mb-n4 pt-0"
