@@ -389,7 +389,7 @@ export default Vue.extend({
     if (app.$cookies.get('race')) {
       r = app.$cookies.get('race')
     }
-    let l = 90
+    let l = 50
     if (app.$cookies.get('level')) {
       l = app.$cookies.get('level')
     }
