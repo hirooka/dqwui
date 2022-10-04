@@ -88,19 +88,17 @@
           sm="6"
           lg="6"
         >
-          <v-text-field
-            v-model="level"
-            label="レベル"
+          <v-select
+            v-model="selectedCost"
+            label="レベル/コスト"
             outlined
-            type="number"
-            min="1"
-            max="91"
+            :items="costs"
+            item-text="level"
+            item-value="cost"
             dense
             class="mt-n4 mb-n4 pt-0"
-            @blur="validateLevel(item)"
-          >
-            90
-          </v-text-field>
+            @change="selectCost"
+          />
         </v-col>
         <v-col
           class="d-flex"
@@ -337,6 +335,7 @@
 import Vue from 'vue'
 import 'cookie-universal-nuxt'
 import logger from '~/plugins/logger'
+const json = require('../../assets/level-cost.json')
 interface Slot {
   type: string
   number: number
@@ -373,6 +372,10 @@ export default Vue.extend({
       i = []
     }
 
+    let c = 532
+    if (app.$cookies.get('cost')) {
+      c = app.$cookies.get('cost')
+    }
     let j = 'GOD_HAND'
     if (app.$cookies.get('job')) {
       j = app.$cookies.get('job')
@@ -389,10 +392,10 @@ export default Vue.extend({
     if (app.$cookies.get('race')) {
       r = app.$cookies.get('race')
     }
-    let l = 50
-    if (app.$cookies.get('level')) {
-      l = app.$cookies.get('level')
-    }
+    // let l = 0
+    // if (app.$cookies.get('level')) {
+    //   l = app.$cookies.get('level')
+    // }
     let b = 'フローラ'
     if (app.$cookies.get('bride')) {
       b = app.$cookies.get('bride')
@@ -407,14 +410,16 @@ export default Vue.extend({
       selectedAttack: atk,
       selectedAttribute: atr,
       selectedRace: r,
-      level: l,
-      bride: b
+      // level: l,
+      bride: b,
+      selectedCost: c
     }
   },
   data () {
     return {
       healing: false,
-      level: 90,
+      // level: 0,
+      costs: json.SPECIAL,
       bride: 'フローラ',
       loading: false,
       jobs: [
@@ -470,6 +475,7 @@ export default Vue.extend({
       exclusions: [],
       inclusions: [],
 
+      selectedCost: 532,
       selectedJob: 'BATTLE_MASTER',
       selectedAttack: 'SLASH',
       selectedAttribute: 'DEIN',
@@ -555,10 +561,11 @@ export default Vue.extend({
           k: this.selectedAttack,
           a: this.selectedAttribute,
           r: this.selectedRace,
-          l: this.level,
+          l: 0, // this.level,
           b: this.bride,
           e: this.selectedExclusions.join(','),
-          i: this.selectedInclusions.join(',')
+          i: this.selectedInclusions.join(','),
+          c: this.selectedCost
         }
       })
       const data = response.data
@@ -568,8 +575,9 @@ export default Vue.extend({
       this.$cookies.set('attack', this.selectedAttack)
       this.$cookies.set('attribute', this.selectedAttribute)
       this.$cookies.set('race', this.selectedRace)
-      this.$cookies.set('level', this.level)
+      // this.$cookies.set('level', this.level)
       this.$cookies.set('bride', this.bride)
+      this.$cookies.set('cost', this.selectedCost)
     },
     getTextColor (color: string) {
       if (color === 'yellow') {
@@ -614,9 +622,11 @@ export default Vue.extend({
     },
     selectJob () {
       if (this.selectedJob === 'GOD_HAND' || this.selectedJob === 'MAKENDOUSHI') {
-        this.level = 50
+        this.costs = json.SPECIAL
+        this.selectedCost = json.SPECIAL[1].cost
       } else {
-        this.level = 90
+        this.costs = json.ADVANCED
+        this.selectedCost = json.ADVANCED[1].cost
       }
     },
     selectAttack () {
@@ -628,20 +638,7 @@ export default Vue.extend({
         this.healing = false
       }
     },
-    validateLevel () {
-      if (this.selectedJob === 'GOD_HAND' || this.selectedJob === 'MAKENDOUSHI') {
-        if (this.level > 51) {
-          this.level = 50
-        } else if (this.level < 1) {
-          this.level = 1
-        }
-      } else if (this.selectedJob === 'BATTLE_MASTER' || this.selectedJob === 'RANGER' || this.selectedJob === 'SAGE' || this.selectedJob === 'ARMAMENTALIST' || this.selectedJob === 'PIRATE' || this.selectedJob === 'MONSTER_MASTER') {
-        if (this.level > 91) {
-          this.level = 90
-        } else if (this.level < 30) {
-          this.level = 30
-        }
-      }
+    selectCost () {
     }
   }
 })
