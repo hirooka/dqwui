@@ -424,7 +424,7 @@ export default Vue.extend({
       loading: false,
       jobs: [
         { text: 'ゴッドハンド', value: 'GOD_HAND' },
-        { text: '魔賢導師？', value: 'MAKENDOUSHI' },
+        { text: '大魔道士', value: 'DAIMADOUSHI' },
         { text: 'バトルマスター', value: 'BATTLE_MASTER' },
         { text: 'レンジャー', value: 'RANGER' },
         { text: '賢者', value: 'SAGE' },
@@ -621,7 +621,7 @@ export default Vue.extend({
       }
     },
     selectJob () {
-      if (this.selectedJob === 'GOD_HAND' || this.selectedJob === 'MAKENDOUSHI') {
+      if (this.selectedJob === 'GOD_HAND' || this.selectedJob === 'DAIMADOUSHI') {
         this.costs = json.SPECIAL
         this.selectedCost = json.SPECIAL[1].cost
       } else {
