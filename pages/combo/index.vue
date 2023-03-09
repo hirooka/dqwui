@@ -427,6 +427,7 @@ export default Vue.extend({
         { text: '大魔道士', value: 'DAIMADOUSHI' },
         { text: '大神官', value: 'DAISHINKAN' },
         { text: 'ニンジャ', value: 'NINJA' },
+        { text: '魔剣士', value: 'MAKENSHI' },
         { text: 'バトルマスター', value: 'BATTLE_MASTER' },
         { text: 'レンジャー', value: 'RANGER' },
         { text: '賢者', value: 'SAGE' },
@@ -623,7 +624,7 @@ export default Vue.extend({
       }
     },
     selectJob () {
-      if (this.selectedJob === 'GOD_HAND' || this.selectedJob === 'DAIMADOUSHI' || this.selectedJob === 'DAISHINKAN' || this.selectedJob === 'NINJA') {
+      if (this.selectedJob === 'GOD_HAND' || this.selectedJob === 'DAIMADOUSHI' || this.selectedJob === 'DAISHINKAN' || this.selectedJob === 'NINJA' || this.selectedJob === 'MAKENSHI') {
         this.costs = json.SPECIAL
         this.selectedCost = json.SPECIAL[1].cost
       } else {
