@@ -1,5 +1,8 @@
 <template>
   <div>
+    <adsbygoogle
+      :ad-slot="'7588868144'"
+    />
     <h2>
       こころ組み合わせ
     </h2>
@@ -267,6 +270,9 @@
         </template>
       </v-data-table>
     </v-container>
+    <adsbygoogle
+      :ad-slot="'7588868144'"
+    />
     <v-container fluid>
       <v-dialog
         v-model="dialog"

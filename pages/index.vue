@@ -52,6 +52,9 @@
             </p>
           </v-card-text>
         </v-card>
+        <adsbygoogle
+          :ad-slot="'7588868144'"
+        />
       </v-col>
     </v-row>
   </div>

@@ -1,5 +1,8 @@
 <template>
   <div>
+    <adsbygoogle
+      :ad-slot="'7588868144'"
+    />
     <h2>
       こころ一覧
     </h2>
@@ -144,6 +147,9 @@
         </template>
       </v-data-table>
     </v-card>
+    <adsbygoogle
+      :ad-slot="'7588868144'"
+    />
   </div>
 </template>
 
