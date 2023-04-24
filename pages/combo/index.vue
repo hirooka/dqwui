@@ -611,7 +611,7 @@ export default Vue.extend({
     deleteExclusion (item: Exclusion) {
       const ex = `${item.value}`
       if (this.selectedExclusions.includes(ex)) {
-        this.selectedExclusions = this.selectedExclusions.filter(v => v !== ex)
+        this.selectedExclusions = this.selectedExclusions.filter((v: any) => v !== ex)
         this.$cookies.set('exclusions', this.selectedExclusions.join(','))
       }
     },
@@ -621,7 +621,7 @@ export default Vue.extend({
     deleteInclusion (item: Inclusion) {
       const ex = `${item.value}`
       if (this.selectedInclusions.includes(ex)) {
-        this.selectedInclusions = this.selectedInclusions.filter(v => v !== ex)
+        this.selectedInclusions = this.selectedInclusions.filter((v: any) => v !== ex)
         this.$cookies.set('inclusions', this.selectedInclusions.join(','))
       }
     },
