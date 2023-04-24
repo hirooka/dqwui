@@ -66,7 +66,7 @@ export default {
     proxy: true
   },
   proxy: {
-    '/v1/': process.env.API_URI || 'http://localhost:8888'
+    '/v1/': process.env.API_URI || 'http://localhost:8080'
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
