@@ -2,6 +2,7 @@
   <div>
     <v-row justify="center" align="center" class="my-0">
       <v-col cols="12" sm="8" md="6">
+        <adsbygoogle />
         <v-card>
           <v-card-title class="headline">
             ドラクエウォーク最適こころ計算ツール<v-icon>mdi-beta</v-icon>

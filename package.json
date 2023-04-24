@@ -13,17 +13,19 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "5.13.6",
+    "@nuxtjs/google-adsense": "^2.1.0",
     "cookie-universal-nuxt": "2.2.2",
     "core-js": "3.26.0",
-    "dayjs": "1.11.6",
+    "dayjs": "^1.11.7",
     "jest-environment-jsdom": "29.3.1",
+    "node-gyp": "^9.3.1",
     "nuxt": "2.15.8",
     "vuetify": "2.6.12",
     "winston": "3.8.2"
   },
   "devDependencies": {
     "@babel/eslint-parser": "7.19.1",
-    "@nuxt/types": "2.15.8",
+    "@nuxt/types": "^2.16.3",
     "@nuxt/typescript-build": "2.1.0",
     "@nuxtjs/eslint-config-typescript": "11.0.0",
     "@nuxtjs/eslint-module": "3.1.0",

@@ -58,7 +58,12 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    'cookie-universal-nuxt'
+    'cookie-universal-nuxt',
+    ['@nuxtjs/google-adsense', {
+      id: 'ca-pub-8255751867533649',
+      analyticsUacct: 'UA-112433874-1',
+      analyticsDomainName: 'hirooka.pro'
+    }]
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
