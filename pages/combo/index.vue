@@ -378,7 +378,7 @@ export default Vue.extend({
       i = []
     }
 
-    let c = 532
+    let c = 565
     if (app.$cookies.get('cost')) {
       c = app.$cookies.get('cost')
     }
@@ -484,8 +484,8 @@ export default Vue.extend({
       exclusions: [],
       inclusions: [],
 
-      selectedCost: 532,
-      selectedJob: 'BATTLE_MASTER',
+      selectedCost: 565,
+      selectedJob: 'GOD_HAND',
       selectedAttack: 'SLASH',
       selectedAttribute: 'DEIN',
       selectedRace: 'NONE',
