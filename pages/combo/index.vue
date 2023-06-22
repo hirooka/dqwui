@@ -598,7 +598,7 @@ export default Vue.extend({
     getCircleColor (color: string) {
       if (color === 'rainbow') {
         return 'black'
-      } else if (color === 'red_green') {
+      } else if (color === 'red_yellow' || color === 'red_blue' || color === 'red_purple' || color === 'red_green' || color === 'yellow_blue' || color === 'yellow_purple' || color === 'yellow_green' || color === 'blue_purple' || color === 'blue_green' || color === 'purple_green') {
         return 'gold'
       } else {
         return color
