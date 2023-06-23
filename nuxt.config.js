@@ -3,9 +3,6 @@ import colors from 'vuetify/es5/util/colors'
 export default {
   // RuntimeConfig
   publicRuntimeConfig: {
-    googleAnalytics: {
-      id: process.env.GOOGLE_ANALYTICS_ID
-    }
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -50,8 +47,7 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
-    // https://google-analytics.nuxtjs.org
-    '@nuxtjs/google-analytics'
+    '@nuxtjs/google-gtag'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -107,7 +103,7 @@ export default {
     port: 3000
   },
 
-  googleAnalytics: {
+  'google-gtag': {
     id: process.env.GOOGLE_ANALYTICS_ID
   }
 }
