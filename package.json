@@ -16,7 +16,7 @@
     "@nuxtjs/google-adsense": "2.0.0",
     "@nuxtjs/google-gtag": "^1.0.4",
     "cookie-universal-nuxt": "2.2.2",
-    "core-js": "3.26.0",
+    "core-js": "3.38.1",
     "dayjs": "^1.11.7",
     "jest-environment-jsdom": "29.3.1",
     "node-gyp": "^9.3.1",
